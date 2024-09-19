@@ -9,7 +9,9 @@ const Discovery = () => {
     <Browsetherangestyle>
       <section class="browsetherange">
         <div class="browsetherange__header">
-          <h1 class="browsetherange__header-h1">Browse The Rangee</h1>
+
+          <h1 class="browsetherange__header-h1">Browse The Range</h1>
+
           <p class="browsetherange__header-p">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
