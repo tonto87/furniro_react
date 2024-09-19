@@ -5,36 +5,27 @@ import {
   Routes,
   NavLink,
 } from "react-router-dom";
+import Header from "./pages/Header/Header";
 import Home from "./pages/Home";
-import About, { Title } from "./pages/About";
+import Shop from "./pages/Shop";
 import NotFound from "./pages/NotFound";
 import { AppProvider } from "./context/AppContext";
 import { LangProvider } from "./context/LangContext";
+import { GlobalStyle } from "./styles";
 
 const App = () => {
   return (
     <LangProvider>
       <AppProvider>
         <Router>
-          <div>
-            <nav>
-              <Title>Test</Title>
-              <ul>
-                <li>
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/about">About</NavLink>
-                </li>
-              </ul>
-            </nav>
-
+          <GlobalStyle>
+            <Header />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/shop" element={<Shop />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </div>
+          </GlobalStyle>
         </Router>
       </AppProvider>
     </LangProvider>
