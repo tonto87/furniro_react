@@ -1,8 +1,8 @@
 import React from "react";
-import { Browsetherangestyle } from "./homeComponents/styles/browsetherangestyle";
-import img106 from "../../src/assets/images/image106.png";
-import img100 from "../../src/assets/images/image100.png";
-import img101 from "../../src/assets/images/image101.png";
+import { Browsetherangestyle } from "./styles/browsetherangestyle";
+import img106 from "../../../src/assets/images/image106.png";
+import img100 from "../../../src/assets/images/image100.png";
+import img101 from "../../../src/assets/images/image101.png";
 
 const Discovery = () => {
   return (
