@@ -5,6 +5,7 @@ import img100 from "../../../src/assets/images/image100.png";
 import img101 from "../../../src/assets/images/image101.png";
 
 const Browsetherange = () => {
+
   return (
     <Browsetherangestyle>
       <section class="browsetherange">
@@ -45,4 +46,6 @@ const Browsetherange = () => {
   );
 };
 
+
 export default Browsetherange;
+
