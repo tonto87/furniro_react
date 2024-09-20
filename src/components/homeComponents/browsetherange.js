@@ -4,7 +4,7 @@ import img106 from "../../../src/assets/images/image106.png";
 import img100 from "../../../src/assets/images/image100.png";
 import img101 from "../../../src/assets/images/image101.png";
 
-const Discovery = () => {
+const Browsetherange = () => {
   return (
     <Browsetherangestyle>
       <section class="browsetherange">
@@ -45,4 +45,4 @@ const Discovery = () => {
   );
 };
 
-export default Discovery;
+export default Browsetherange;
