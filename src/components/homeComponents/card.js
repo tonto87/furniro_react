@@ -15,7 +15,7 @@ const Card = () => {
           alt=""
         />
         <div className="card__main">
-          <h1 className="card__main-title">Syltherine</h1>
+          <h1 className="card__main-title">Syltherinee</h1>
           <p className="card__main-name">Stylish cafe chair</p>
           <div className="card__prices">
             <p className="card__price-now">Rp 2.500.000</p>
