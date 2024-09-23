@@ -9,6 +9,9 @@ import { useState } from "react";
 import Header from "./pages/Header/Header";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
+import LoginSignup from "./pages/LoginSignup/LoginSignup";
+import Footer from "./pages/Footer/Footer";
+
 import NotFound from "./pages/NotFound";
 import { AppProvider } from "./context/AppContext";
 import { LangProvider } from "./context/LangContext";
@@ -26,8 +29,10 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home setCartCount={setCartCount} />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/loginSignup" element={<LoginSignup />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <Footer />
           </GlobalStyle>
         </Router>
       </AppProvider>

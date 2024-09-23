@@ -19,11 +19,11 @@ export default function Header({ cartCount }) {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/shop">Shop</NavLink>
         <NavLink to="/about">About</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/contact">Contact</NavLink>        
       </div>
 
       <div className="nav-icons">
-        <NavLink to="/">
+        <NavLink to="/loginSignup">
           <img src={acc} alt="Account" />
         </NavLink>
         <NavLink to="/">
