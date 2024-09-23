@@ -5,6 +5,7 @@ import {
   Routes,
   NavLink,
 } from "react-router-dom";
+import { useState } from "react";
 import Header from "./pages/Header/Header";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
@@ -14,14 +15,16 @@ import { LangProvider } from "./context/LangContext";
 import { GlobalStyle } from "./styles";
 
 const App = () => {
+  const [cartCount, setCartCount] = useState(0);
+
   return (
     <LangProvider>
       <AppProvider>
         <Router>
           <GlobalStyle>
-            <Header />
+            <Header cartCount={cartCount} />
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home setCartCount={setCartCount} />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

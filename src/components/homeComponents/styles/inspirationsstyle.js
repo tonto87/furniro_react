@@ -37,6 +37,7 @@ export const InspirationsStyle = styled.div`
       }
 
       &-button {
+        cursor: pointer;
         background: ${variables.primary};
         border: 0px;
         color: ${variables.white};
