@@ -7,7 +7,7 @@ import shoppingCart from "../../assets/icons/shoppingCart.svg";
 import search from "../../assets/icons/search.svg";
 import { Navbar } from "./styles";
 
-export default function Header() {
+export default function Header({ cartCount }) {
   return (
     <Navbar>
       <NavLink to="/" className="logo">
@@ -19,14 +19,24 @@ export default function Header() {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/shop">Shop</NavLink>
         <NavLink to="/about">About</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/contact">Contact</NavLink>        
       </div>
 
       <div className="nav-icons">
-        <NavLink to="/"><img src={acc} alt="acc" /></NavLink>
-        <NavLink to="/"><img src={search} alt="search" /></NavLink>
-        <NavLink to="/"><img src={heart} alt="heart" /></NavLink>
-        <NavLink to="/"><img src={shoppingCart} alt="cart" /></NavLink>
+        <NavLink to="/loginSignup">
+          <img src={acc} alt="Account" />
+        </NavLink>
+        <NavLink to="/">
+          <img src={search} alt="Search" />
+        </NavLink>
+        <NavLink to="/">
+          <img src={heart} alt="Wishlist" />
+        </NavLink>
+        <NavLink to="/">
+          <img src={shoppingCart} alt="Cart" />
+          <span className="cart-count">{cartCount}</span>{" "}
+          {/* Количество товаров */}
+        </NavLink>
       </div>
     </Navbar>
   );

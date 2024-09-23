@@ -1,17 +1,25 @@
 import React from "react";
 import { OurProductsStyle } from "./styles/ourproductsstyle";
 import Card from "../../components/homeComponents/card";
+import { useState } from "react";
+import {products} from "../../data.js";
 
-const OurProducts = () => {
+const OurProducts = ({ setCartCount }) => {
+  const [cartCount, setCartCountState] = useState(0);
+
+  const addToCart = () => {
+    setCartCountState((prevCount) => prevCount + 1);
+    setCartCount(cartCount + 1);
+  };
+
   return (
-    <OurProductsStyle>      
-     <section className="product">
+    <OurProductsStyle>
+      <section className="product">
         <h1 className="product__title">Our products</h1>
         <div className="product__cards">
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+          {products.map((product) => (
+            <Card key={product.id} product={product} addToCart={addToCart} />
+          ))}
         </div>
         <div className="product__button">
           <button className="product__button-btn">

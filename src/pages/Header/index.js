@@ -1,3 +1,3 @@
-export { default } from "./Shop";
+export { default } from "./Header";
 
 export * from "./styles";

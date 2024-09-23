@@ -4,11 +4,13 @@ import inspirationbedroom from "../../../src/assets/images/inspirationbedroom.pn
 import vector1 from "../../../src/assets/icons/vector1.svg";
 import inspirationdiningroom from "../../../src/assets/images/inspirationdiningroom.png";
 import inspirationcrop from "../../../src/assets/images/inspirationcrop.png";
+import { useNavigate } from "react-router-dom";
 
 const Inspirations = () => {
+  const navigate = useNavigate();
   return (
     <InspirationsStyle>
-     <section className="inspirations">
+      <section className="inspirations">
         <div className="inspirations__body">
           <div className="inspirations__title">
             <h1 className="inspirations__title-h1">
@@ -18,7 +20,14 @@ const Inspirations = () => {
               Our designer already made a lot of beautiful prototipe of rooms
               that inspire you
             </p>
-            <button className="inspirations__title-button">Explore More</button>
+            <button
+              className="inspirations__title-button"
+              onClick={() => {
+                navigate("/shop"); // Переход на страницу "shop"
+              }}
+            >
+              Explore More
+            </button>
           </div>
           <div className="inspirations__slider">
             <div className="inspirations__slider-cart">
@@ -35,10 +44,17 @@ const Inspirations = () => {
                     src={vector1}
                     alt=""
                   />
-                  <p className="inspirations__slider-cart-title-1-p">Bed Room</p>
+                  <p className="inspirations__slider-cart-title-1-p">
+                    Bed Room
+                  </p>
                 </div>
                 <div className="inspirations__slider-cart-title-2">
-                  <h1 className="inspirations__slider-cart-title-2-h1">
+                  <h1
+                    className="inspirations__slider-cart-title-2-h1"
+                    onClick={() => {
+                      navigate("/shop"); // Переход на страницу "shop"
+                    }}
+                  >
                     Inner Peace
                   </h1>
                 </div>
