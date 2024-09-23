@@ -4,6 +4,7 @@ import share from "../../../src/assets/icons/gridicons_share.svg";
 import compare from "../../../src/assets/icons/compare-svgrepo-com 1.svg";
 import heart from "../../../src/assets/icons/heart.svg";
 
+
 const Card = ({ product, addToCart }) => {
   return (
     <CardStyle>

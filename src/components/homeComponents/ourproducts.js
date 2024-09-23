@@ -4,6 +4,7 @@ import Card from "../../components/homeComponents/card";
 import { useState } from "react";
 import {products} from "../../data.js";
 
+
 const OurProducts = ({ setCartCount }) => {
   const [cartCount, setCartCountState] = useState(0);
 
@@ -19,7 +20,6 @@ const OurProducts = ({ setCartCount }) => {
         <div className="product__cards">
           {products.map((product) => (
             <Card key={product.id} product={product} addToCart={addToCart} />
-          ))}
         </div>
         <div className="product__button">
           <button className="product__button-btn">
