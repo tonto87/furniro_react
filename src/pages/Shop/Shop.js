@@ -4,16 +4,16 @@ import { appActions } from "../../reducer/appReducer";
 
 
 const Shop = () => {
-  const [hidden] = useState(true);
+  
   const { dispatch } = useContext(AppContext);
 
   return (
     <div>
-      <button onClick={() => dispatch({ type: appActions.INCREMENT })}>
-        Increase
-      </button>
+    
+       
+    
       {/* <Title $hide={hidden}>About Page</Title> */}
-      <p>This is a simple app using React Router, Context, and useReducer.</p>
+      
     </div>
   );
 };

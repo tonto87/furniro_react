@@ -20,6 +20,7 @@ const OurProducts = ({ setCartCount }) => {
         <div className="product__cards">
           {products.map((product) => (
             <Card key={product.id} product={product} addToCart={addToCart} />
+          ))}
         </div>
         <div className="product__button">
           <button className="product__button-btn">
