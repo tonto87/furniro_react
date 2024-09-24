@@ -1,17 +1,16 @@
-import React, { useState}  from "react";
+import React, { useState } from "react";
 import { CardStyle } from "./styles/cardstyle";
 import share from "../../../src/assets/icons/gridicons_share.svg";
 import compare from "../../../src/assets/icons/compare-svgrepo-com 1.svg";
 import heart from "../../../src/assets/icons/heart.svg";
 
-
 const Card = ({ product }) => {
   const [addedProduct, setAddedProduct] = useState([]);
 
-  const handleAddToCart = (product) => {
+  const handleAddToCart = () => {
     setAddedProduct((prevProducts) => [...prevProducts, product]);
     // Optionally, you can log or show a message for confirmation
-    console.log(addedProduct);
+    console.log(`${product.name} added to cart`);
   };
 
   return (
@@ -26,7 +25,7 @@ const Card = ({ product }) => {
           </div>
         </div>
         <div className="card__hovered">
-          <button className="card__hovered-btn" onClick={() => handleAddToCart(product)}>
+          <button className="card__hovered-btn" onClick={handleAddToCart}>
             Add to cart
           </button>
 

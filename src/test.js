@@ -1,63 +1,40 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import logoimg from "../../assets/icons/logo.svg";
-import acc from "../../assets/icons/acc.svg";
-import heart from "../../assets/icons/heart.svg";
-import shoppingCart from "../../assets/icons/shoppingCart.svg";
-import search from "../../assets/icons/search.svg";
-import { Navbar } from "./styles";
-import CartModal from "../../components/cartModalComponents/cartModal";
+import React, { useState, useEffect } from "react";
+import { OurProductsStyle } from "./styles/ourproductsstyle";
+import Card from "../../components/homeComponents/card";
+import { products } from "../../data.js";
+import { Link } from "react-router-dom"; // Import Link for navigation
 
-export default function Header({ cartCount }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const OurProducts = ({ setCartCount }) => {
+  const [cartCount, setCartCountState] = useState(0);
+  const [listAddedProducts, setListAddedProduct] = useState([]);
 
-  const handleOpenCart = () => {
-    setIsModalOpen(true);
+  const addToCart = (addedProduct) => {
+    setCartCountState((prevCount) => prevCount + 1);
+    setListAddedProduct((prevProducts) => [...prevProducts, addedProduct]);
+    setCartCount((prevCount) => prevCount + 1); // Sync with parent
   };
 
-  const handleCloseCart = () => {
-    setIsModalOpen(false);
-  };
+  useEffect(() => {
+    console.log(listAddedProducts);
+  }, [listAddedProducts]);
 
   return (
-    <>
-      <Navbar>
-        <NavLink to="/" className="logo">
-          <img src={logoimg} alt="Logo" />
-          Funiro
-        </NavLink>
-
-        <div className="nav-links">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/shop">Shop</NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/contact">Contact</NavLink>        
+    <OurProductsStyle>
+      <section className="product">
+        <h1 className="product__title">Our products</h1>
+        <div className="product__cards">
+          {products.map((product) => (
+            <Card key={product.id} product={product} addToCart={addToCart} />
+          ))}
         </div>
-
-        <div className="nav-icons">
-          <NavLink to="/loginSignup">
-            <img src={acc} alt="Account" />
-          </NavLink>
-          <NavLink to="/">
-            <img src={search} alt="Search" />
-          </NavLink>
-          <NavLink to="/">
-            <img src={heart} alt="Wishlist" />
-          </NavLink>
-          <span onClick={handleOpenCart} style={{ cursor: 'pointer' }} aria-label="Cart">
-            <img src={shoppingCart} alt="Cart" />
-            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
-          </span>
+        <div className="product__button">
+          <Link to="/shop" className="product__button-btn">
+            Show More
+          </Link>
         </div>
-      </Navbar>
-
-      {isModalOpen && (
-        <CartModal 
-          isOpen={isModalOpen} 
-          onClose={handleCloseCart} 
-          subtotal={/* calculate subtotal here */}
-        />
-      )}
-    </>
+      </section>
+    </OurProductsStyle>
   );
-}
+};
+
+export default OurProducts;

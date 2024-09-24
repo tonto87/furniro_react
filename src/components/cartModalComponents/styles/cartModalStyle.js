@@ -1,7 +1,17 @@
 import styled from "styled-components";
 import { variables } from "../../../../src/styles/variables";
 
-export const CartModalStyle = styled.div`  
+export const CartModalStyle = styled.div` 
+
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: ${variables.black};
+  background-color: rgb(0 0 0 / 40%);
+
   .cartModal {
   display: none;
   position: fixed;
@@ -18,13 +28,16 @@ export const CartModalStyle = styled.div`
     margin-left: auto;
     padding: 20px 0 0;
     border: 1px solid ${variables.lightgrey};
-    width: 417px;
+    width: fit-content;
+    align-items: last baseline;
     height: 650px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    overflow: auto;
 
     &-head {
+      width:100%;
       display: flex;
       flex-direction: column;
       gap: 26px;
@@ -44,7 +57,7 @@ export const CartModalStyle = styled.div`
 
         &-box {
           margin-left: auto;
-          padding: 1px 38px 0 0;
+          // padding: 1px 38px 0 0;
 
           &-button {
             margin-left: auto;
@@ -67,18 +80,20 @@ export const CartModalStyle = styled.div`
 
       &-line {
         height: 1px;
-        width: 287px;
+       
         background: ${variables.smoke};
       }
     }
 
     &-products {
+      
       display: flex;
       padding: 42px 0 0 30px;
       flex-direction: column;
       gap: 20px;
 
       &-product {
+        cursor: pointer;
         display: flex;
         padding: 0 0 0 2px;
 

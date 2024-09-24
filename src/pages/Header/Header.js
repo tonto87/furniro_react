@@ -10,7 +10,7 @@ import CartModal from "../../components/cartModalComponents/cartModal";
 
 export default function Header({ cartCount }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]); // Manage cart items here
+  // const [cartItems, setCartItems] = useState([]); // Manage cart items here
 
   const handleOpenCart = () => {
     setIsModalOpen(true);
@@ -21,9 +21,9 @@ export default function Header({ cartCount }) {
   };
 
   // Calculate subtotal
-  const calculateSubtotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
+  // const calculateSubtotal = () => {
+  //   return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  // };
 
   return (
     <>
@@ -61,7 +61,7 @@ export default function Header({ cartCount }) {
         <CartModal 
           isOpen={isModalOpen} 
           onClose={handleCloseCart} 
-          subtotal={calculateSubtotal()} // Pass the calculated subtotal
+          // subtotal={calculateSubtotal()} // Pass the calculated subtotal
         />
       )}
     </>

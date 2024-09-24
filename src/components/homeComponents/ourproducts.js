@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { OurProductsStyle } from "./styles/ourproductsstyle";
 import Card from "../../components/homeComponents/card";
-import { useState } from "react";
-import {products} from "../../data.js";
+import { products } from "../../data.js";
 
 
-const OurProducts = ({ setCartCount }) => {
+const OurProducts = ({ setCartCount,addedProduct }) => {
   const [cartCount, setCartCountState] = useState(0);
+  const [listAddedProducts, setListAddedProduct] = useState([]);
 
-  const addToCart = () => {
+
+
+  const addToCart = (addedProduct) => {
     setCartCountState((prevCount) => prevCount + 1);
-    setCartCount(cartCount + 1);
+    setListAddedProduct((prevProducts) => [...prevProducts, addedProduct]);
+    
+    console.log(listAddedProducts)
   };
+
+  useEffect(() => {
+    
+  }, [addedProduct]);
 
   return (
     <OurProductsStyle>
@@ -20,6 +28,7 @@ const OurProducts = ({ setCartCount }) => {
         <div className="product__cards">
           {products.map((product) => (
             <Card key={product.id} product={product} addToCart={addToCart} />
+            
           ))}
         </div>
         <div className="product__button">

@@ -1,13 +1,21 @@
 import React from 'react';
 import {CartModalStyle} from "./styles/cartModalStyle";
+import CartModalProduct from '../cartModalComponents/cartModalProduct';
+import { useState } from "react";
+import {products} from "../../data.js";
 
-const CartModal = ({ isOpen, onClose, subtotal }) => {
+const CartModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
+// const [cartItems, setCartItems] = useState([]); // Manage cart items here
 
-  return (
-    
-    <section id="cartModal" className="cartModal" onClick={onClose}>
-    <CartModalStyle>
+
+// Calculate subtotal
+  // const calculateSubtotal = () => {
+  //   return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  // };
+
+  return (   
+    <CartModalStyle  className="cartModal" onClick={onClose}>
       <div className="cartModal__body" onClick={e => e.stopPropagation()}>
         <div className="cartModal__body-head">
           <div className="cartModal__body-head-group">
@@ -28,6 +36,10 @@ const CartModal = ({ isOpen, onClose, subtotal }) => {
         </div>
         <div className="cartModal__body-products">
           {/* Render cart items here */}
+          {products.map((product) => (
+            <CartModalProduct key={product.id} product={product} />
+          ))}
+          
         </div>
         <div className="cartModal__body-footer">
           <div className="cartModal__body-footer-subtotal">
@@ -35,7 +47,7 @@ const CartModal = ({ isOpen, onClose, subtotal }) => {
               Subtotal
             </h1>
             <h1 className="cartModal__body-footer-subtotal-price">
-              Rs. {subtotal.toFixed(2)}
+              {/* Rs. {subtotal.toFixed(2)} */}
             </h1>
           </div>
           <div className="cartModal__body-footer-line"></div>
@@ -53,7 +65,7 @@ const CartModal = ({ isOpen, onClose, subtotal }) => {
         </div>
       </div>
       </CartModalStyle>
-    </section>
+   
     
   );
 };
