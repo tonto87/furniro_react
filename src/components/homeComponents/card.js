@@ -5,13 +5,11 @@ import compare from "../../../src/assets/icons/compare-svgrepo-com 1.svg";
 import heart from "../../../src/assets/icons/heart.svg";
 
 
-const Card = ({ product }) => {
-  const [addedProduct, setAddedProduct] = useState([]);
-
+const Card = ({ product, onClick}) => { 
   const handleAddToCart = (product) => {
-    setAddedProduct((prevProducts) => [...prevProducts, product]);
-    // Optionally, you can log or show a message for confirmation
-    console.log(addedProduct);
+    onClick(product);
+    
+    // console.log(product);
   };
 
   return (

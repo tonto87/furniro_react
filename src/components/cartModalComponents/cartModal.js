@@ -4,15 +4,10 @@ import CartModalProduct from '../cartModalComponents/cartModalProduct';
 import { useState } from "react";
 import {products} from "../../data.js";
 
-const CartModal = ({ isOpen, onClose }) => {
+const CartModal = ({ isOpen, onClose, listProducts }) => {
   if (!isOpen) return null;
-// const [cartItems, setCartItems] = useState([]); // Manage cart items here
 
-
-// Calculate subtotal
-  // const calculateSubtotal = () => {
-  //   return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  // };
+  console.log({listProducts})
 
   return (   
     <CartModalStyle  className="cartModal" onClick={onClose}>
@@ -64,6 +59,7 @@ const CartModal = ({ isOpen, onClose }) => {
           </div>
         </div>
       </div>
+      
       </CartModalStyle>
    
     

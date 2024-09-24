@@ -4,30 +4,36 @@ import Card from "../../components/homeComponents/card";
 import { products } from "../../data.js";
 
 
-const OurProducts = ({ setCartCount,addedProduct }) => {
+const OurProducts = ({ setCartCount}) => {
   const [cartCount, setCartCountState] = useState(0);
   const [listAddedProducts, setListAddedProduct] = useState([]);
 
 
 
-  const addToCart = (addedProduct) => {
+  const addToCart = (product) => {
     setCartCountState((prevCount) => prevCount + 1);
-    setListAddedProduct((prevProducts) => [...prevProducts, addedProduct]);
+    // setListAddedProduct((prevProducts) => [...prevProducts, onClick]);
+    setListAddedProduct((prevProducts) => {
+      const isProductInCart = prevProducts.find(item => item.id === product.id);
+      if (!isProductInCart) {
+        return [...prevProducts, product];
+      }
+      return prevProducts; 
+    });
     
     console.log(listAddedProducts)
+    setCartCount(cartCount + 1);
   };
 
-  useEffect(() => {
-    
-  }, [addedProduct]);
-
+  
+  
   return (
     <OurProductsStyle>
       <section className="product">
         <h1 className="product__title">Our products</h1>
         <div className="product__cards">
           {products.map((product) => (
-            <Card key={product.id} product={product} addToCart={addToCart} />
+            <Card key={product.id} product={product} onClick={addToCart} /> //onClick={() => addToCart(product)}
             
           ))}
         </div>
@@ -37,6 +43,7 @@ const OurProducts = ({ setCartCount,addedProduct }) => {
           </button>
         </div>
       </section>
+      
     </OurProductsStyle>
   );
 };

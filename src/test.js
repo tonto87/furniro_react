@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { OurProductsStyle } from "./styles/ourproductsstyle";
-import Card from "../../components/homeComponents/card";
-import { products } from "../../data.js";
-import { Link } from "react-router-dom"; // Import Link for navigation
-
-const OurProducts = ({ setCartCount }) => {
+const OurProducts = ({ setCartCount, addedProduct }) => {
   const [cartCount, setCartCountState] = useState(0);
   const [listAddedProducts, setListAddedProduct] = useState([]);
 
-  const addToCart = (addedProduct) => {
+  const addToCart = (product) => {
     setCartCountState((prevCount) => prevCount + 1);
-    setListAddedProduct((prevProducts) => [...prevProducts, addedProduct]);
-    setCartCount((prevCount) => prevCount + 1); // Sync with parent
+    setListAddedProduct((prevProducts) => {
+      const isProductInCart = prevProducts.find(item => item.id === product.id);
+      if (!isProductInCart) {
+        return [...prevProducts, product];
+      }
+      return prevProducts; // Prevent duplicates
+    });
+    console.log(listAddedProducts);
+    setCartCount(cartCount + 1); // Update cart count in the parent
   };
 
   useEffect(() => {
-    console.log(listAddedProducts);
-  }, [listAddedProducts]);
+    // Optional: handle side effects when addedProduct changes
+  }, [addedProduct]);
 
   return (
     <OurProductsStyle>
@@ -24,13 +25,13 @@ const OurProducts = ({ setCartCount }) => {
         <h1 className="product__title">Our products</h1>
         <div className="product__cards">
           {products.map((product) => (
-            <Card key={product.id} product={product} addToCart={addToCart} />
+            <Card key={product.id} product={product} onClick={addToCart} />
           ))}
         </div>
         <div className="product__button">
-          <Link to="/shop" className="product__button-btn">
-            Show More
-          </Link>
+          <button className="product__button-btn">
+            <a href="./shop.html">Show More</a>
+          </button>
         </div>
       </section>
     </OurProductsStyle>
