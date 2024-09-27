@@ -1,13 +1,17 @@
 import React from "react";
 import { useCart } from "../../context/CartContext";
+import Visit from "../../components/shopComponents/visit"
+import Filtershop from "../../components/shopComponents/filtershop";
+import Ourshop from "../../components/shopComponents/ourshop";
 
-const Shop = () => {
-  const { dispatch } = useCart();
+const Shop = ({ setCartCount }) => {  
 
   return (
-    <div>
-      {/* <Title $hide={hidden}>About Page</Title> */}
-    </div>
+    <>
+      <Visit/>
+      <Filtershop/>
+      <Ourshop setCartCount={setCartCount}/>
+    </>
   );
 };
 

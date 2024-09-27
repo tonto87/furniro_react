@@ -18,7 +18,7 @@ export const CardStyle = styled.div`
       height: 48px;
       border-radius: 100%;
       border: none;
-      background-color: $redAccents;
+      background-color: ${variables.redAccents};
       color: ${variables.white};
   
       &--new {
