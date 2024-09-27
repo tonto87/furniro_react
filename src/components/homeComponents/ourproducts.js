@@ -13,7 +13,9 @@ const OurProducts = ({ setCartCount }) => {
     setListAddedProduct((prevProducts) => {
       const isProductInCart = prevProducts.find((item) => item.id === product.id);
       if (!isProductInCart) {
-        return [...prevProducts, { ...product, quantity: 1 }]; // Добавляем количество
+
+        return [...prevProducts, { ...product, quantity: 1 }];
+
       } else {
         return prevProducts.map((item) => 
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
