@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { variables } from "../../../styles/variables";
 
 export const OurProductsStyle = styled.div`
+font-family: ${variables.fonts.montserrat};
   .product {
     padding: 56px 102px 69px;
 

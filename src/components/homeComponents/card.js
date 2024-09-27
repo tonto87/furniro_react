@@ -1,15 +1,22 @@
-import React, { useState}  from "react";
+import React, { useState } from "react";
 import { CardStyle } from "./styles/cardstyle";
 import share from "../../../src/assets/icons/gridicons_share.svg";
 import compare from "../../../src/assets/icons/compare-svgrepo-com 1.svg";
 import heart from "../../../src/assets/icons/heart.svg";
+import { useCart } from "../../context/CartContext";
 
+const Card = ({ product }) => {
+  const { dispatch } = useCart();
+  const [isAdded, setIsAdded] = useState(false);
 
-const Card = ({ product, onClick}) => { 
-  const handleAddToCart = (product) => {
-    onClick(product);
-    
-    // console.log(product);
+  const handleAddToCart = () => {
+    try {
+      dispatch({ type: 'ADD_TO_CART', product });
+      setIsAdded(true); // Показываем, что продукт добавлен
+      setTimeout(() => setIsAdded(false), 2000); // Скрываем через 2 секунды
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+    }
   };
 
   return (
@@ -24,10 +31,9 @@ const Card = ({ product, onClick}) => {
           </div>
         </div>
         <div className="card__hovered">
-          <button className="card__hovered-btn" onClick={() => handleAddToCart(product)}>
-            Add to cart
+          <button className="card__hovered-btn" onClick={handleAddToCart}>
+            {isAdded ? "Added!" : "Add to cart"}
           </button>
-
           <div className="card__hovered-icons">
             <a className="card__hovered-shareIcon" href="#">
               <img src={share} alt="Share" />

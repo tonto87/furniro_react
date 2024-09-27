@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { variables } from "../../../styles/variables";
 
 export const FuniroStyle = styled.section`
+font-family: ${variables.fonts.montserrat};
   display: flex;
   flex-direction: column;
   padding: 65px 0 50px;

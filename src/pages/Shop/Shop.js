@@ -1,19 +1,12 @@
-import React, { useContext, useState } from "react";
-import { AppContext } from "../../context/AppContext";
-import { appActions } from "../../reducer/appReducer";
-
+import React from "react";
+import { useCart } from "../../context/CartContext";
 
 const Shop = () => {
-  
-  const { dispatch } = useContext(AppContext);
+  const { dispatch } = useCart();
 
   return (
     <div>
-    
-       
-    
       {/* <Title $hide={hidden}>About Page</Title> */}
-      
     </div>
   );
 };
