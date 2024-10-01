@@ -1,16 +1,14 @@
 import React from "react";
-import { useCart } from "../../context/CartContext";
-import Visit from "../../components/shopComponents/visit"
-import Filtershop from "../../components/shopComponents/filtershop";
-import Ourshop from "../../components/shopComponents/ourshop";
+import FilterShop from "./components/Filter";
+import ShopList from "./components/ShopList";
+import Visit from "./components/Visit";
 
-const Shop = ({ setCartCount }) => {  
-
+const Shop = ({ setCartCount }) => {
   return (
     <>
-      <Visit/>
-      <Filtershop/>
-      <Ourshop setCartCount={setCartCount}/>
+      <Visit />
+      <FilterShop />
+      <ShopList setCartCount={setCartCount} />
     </>
   );
 };
