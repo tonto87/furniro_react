@@ -1,9 +1,9 @@
-import { React, useState } from "react";
-import Discovery from "../../components/homeComponents/discovery";
-import Browsetherange from "../../components/homeComponents/browsetherange";
-import OurProducts from "../../components/homeComponents/ourproducts";
-import Inspirations from "../../components/homeComponents/inspirations";
-import Funiro from "../../components/homeComponents/funiro";
+import { React } from "react";
+import Discovery from "./components/Discovery";
+import Browsetherange from "./components/BrowseTheRange";
+import OurProducts from "./components/OurProducts";
+import Inspirations from "./components/Inspirations";
+import Funiro from "./components/Funiro";
 
 const Home = ({ setCartCount }) => {
   return (

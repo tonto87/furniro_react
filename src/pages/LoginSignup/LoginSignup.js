@@ -1,5 +1,5 @@
 import React, { useState, useReducer } from "react";
-import { LoginSignupStyle } from "../LoginSignup/styles";
+import { LoginSignupStyle } from "./styles";
 import LoginPage from "../../components/loginComponents/loginPage";
 import RegisterPage from "../../components/loginComponents/registerPage";
 import ProfilPage from "../../components/loginComponents/profilPage";

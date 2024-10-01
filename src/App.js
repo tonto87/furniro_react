@@ -1,15 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./pages/Header/Header";
+import Header from "./components/Header/Header";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import LoginSignup from "./pages/LoginSignup/LoginSignup";
-import Footer from "./pages/Footer/Footer";
-import CartModal from "./components/cartModalComponents/cartModal";
+import Footer from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound";
 import { CartProvider } from "./context/CartContext";
 
-import { GlobalStyle } from "./styles";
+import { GlobalStyle } from "./styles/global";
 
 const App = () => {
   return (
@@ -17,7 +16,6 @@ const App = () => {
       <Router>
         <GlobalStyle>
           <Header />
-          <CartModal />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
