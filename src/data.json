@@ -2,63 +2,63 @@
   "products": [
     {
       "id": 1,
-      "img": "image 1.png",
+      "img": "image1.png",
       "name": "Wireless Headphones",
       "paragraph": "Dining",
       "price": 89.99
     },
     {
       "id": 2,
-      "img": "image 2.png",
+      "img": "image2.png",
       "name": "Smart Watch",
       "paragraph": "Bed",
       "price": 149.99
     },
     {
       "id": 3,
-      "img": "image 3.png",
+      "img": "image3.png",
       "name": "Gaming Mouse",
       "paragraph": "Kitchen",
       "price": 49.99
     },
     {
       "id": 4,
-      "img": "image 4.png",
+      "img": "image4.png",
       "name": "4K Monitor",
       "paragraph": "mitchen",
       "price": 299.99
     },
     {
       "id": 5,
-      "img": "image 9.png",
+      "img": "image9.png",
       "name": "Bluetooth Speaker",
       "paragraph": "bathroom",
       "price": 59.99
     },
     {
       "id": 6,
-      "img": "image 6.png",
+      "img": "image6.png",
       "name": "Mechanical Keyboard",
       "paragraph": "toilet",
       "price": 79.99
     },
     {
       "id": 7,
-      "img": "image 7.png",
+      "img": "image7.png",
       "name": "USB-C Hub",
       "paragraph": "qostinniy",
       "price": 34.99
     },
     {
       "id": 8,
-      "img": "image 8.png",
+      "img": "image8.png",
       "name": "Laptop Stand",
       "paragraph": "detskiy",
       "price": 39.99
     },
     {
       "id": 9,
-      "img": "image 8.png",
+      "img": "image9.png",
       "name": "Laptop Stand",
       "paragraph": "detskiy",
       "price": 39.99

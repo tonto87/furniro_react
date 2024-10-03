@@ -14,12 +14,12 @@ export const CartModalStyle = styled.div`
   justify-content: end;
 
   .cartModal__body {
-    background-color: ${variables.lightwhite};    
+    background-color: ${variables.lightwhite};
     padding: 15px;
     border: 1px solid ${variables.lightgrey};
     width: 100%;
     max-width: 450px;
-    max-height: 80%;
+    max-height: 50%;
     display: flex;
     flex-direction: column;
     border-radius: 8px;
@@ -35,7 +35,8 @@ export const CartModalStyle = styled.div`
 
     h2 {
       margin: 0;
-      font-size: 24px;
+      font-size: 16px;
+      text-transform: uppercase;
     }
 
     .cartModal__close-button {
@@ -45,7 +46,6 @@ export const CartModalStyle = styled.div`
       font-size: 16px;
       color: ${variables.primary};
       transition: color 0.3s;
-
       &:hover {
         color: ${variables.secondary};
       }
@@ -55,14 +55,19 @@ export const CartModalStyle = styled.div`
   .cartModal__products {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
     overflow-y: auto;
-    flex-grow: 1;
+    overflow-x: hidden;
+    max-height: 60%;
+    // flex-grow: 1;
 
     .cartModal__product {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-around;
+
+      height: 50px;
 
       .cartModal__product-image {
         width: 50px;
@@ -74,12 +79,19 @@ export const CartModalStyle = styled.div`
 
       .cartModal__product-name {
         margin: 0 10px;
-        font-weight: bold;
+        letter-spacing: -0.08em;
+        font-size: 12px;
+      }
+      .cartModal__product-price {
+        font-size: 12px;
       }
 
       .cartModal__remove-button {
+        text-transform: uppercase;
+
         background: none;
         border: none;
+        font-size: 12px;
         cursor: pointer;
         color: ${variables.danger};
         transition: color 0.3s;
@@ -94,21 +106,28 @@ export const CartModalStyle = styled.div`
         align-items: center;
 
         button {
-          background: ${variables.lightgrey};
+          background: ${variables.secondary};
           border: none;
           cursor: pointer;
           padding: 5px 10px;
           margin: 0 5px;
           border-radius: 4px;
           transition: background 0.3s;
+          color: ${variables.grey2};
 
           &:hover {
-            background: ${variables.secondary};
+            background: ${variables.grey2};
+            color: white;
           }
 
           &:disabled {
             background: ${variables.smoke};
+
             cursor: not-allowed;
+          }
+
+          &.cartModal__select-button-active {
+            background: ${variables.grey2};
           }
         }
       }
@@ -124,56 +143,37 @@ export const CartModalStyle = styled.div`
     gap: 10px;
 
     &-subtotal {
-      display: flex;    
+      display: flex;
 
       &-price {
         color: ${variables.primary};
-        font-size: 20px;        
+        font-size: 16px;
         font-weight: 600;
-        line-height: normal;        
+        line-height: normal;
       }
-    } 
+    }
+
     &-line {
-      width: 417px;
+      width: 100%;
       height: 1px;
       background: ${variables.smoke};
-    }   
+    }
+
     &-buttons {
       justify-content: center;
       display: flex;
       gap: 14px;
-      &-cart {
+
+      button {
         border-radius: 50px;
-        border: 1px solid $black;
+        border: 1px solid ${variables.black};
         display: flex;
         padding: 6px 30px;
         align-items: flex-start;
         gap: 10px;
         cursor: pointer;
-        &:hover {
-          color: ${variables.primary};
-        }
-      }
-      &-checkout {
-        border-radius: 50px;
-        border: 1px solid $black;
-        display: flex;
-        padding: 6px 30px;
-        align-items: flex-start;
-        gap: 10px;
-        cursor: pointer;
-        &:hover {;
-          color: ${variables.primary};
-        }
-      }
-      &-comparsion {
-        border-radius: 50px;
-        border: 1px solid $black;
-        display: flex;
-        padding: 6px 30px;
-        align-items: flex-start;
-        gap: 10px;
-        cursor: pointer;
+        transition: color 0.3s;
+
         &:hover {
           color: ${variables.primary};
         }

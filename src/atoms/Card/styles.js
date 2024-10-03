@@ -35,7 +35,6 @@ export const CardStyle = styled.div`
     }
 
     &__main {
-      /* Сверху | Справа | Снизу | Слева */
       padding: 16px 20px 30px 16px;
       background: ${variables.lightBG};
 
@@ -76,12 +75,11 @@ export const CardStyle = styled.div`
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
-      line-height: 150%; /* 24px */
+      line-height: 150%;
       text-decoration-line: strikethrough;
     }
 
     &__hovered {
-      /* Сверху | Справа | Снизу | Слева */
       position: absolute;
       display: flex;
       width: 100%;
@@ -134,6 +132,9 @@ export const CardStyle = styled.div`
         line-height: 150%; /* 24px */
         gap: 2px;
         text-decoration: none;
+        img {
+          width: 20px;
+        }
       }
 
       &-like {
@@ -152,6 +153,7 @@ export const CardStyle = styled.div`
       // stylelint-disable-next-line
       .card__hovered {
         opacity: 0.72;
+        transform: none;
       }
     }
   }

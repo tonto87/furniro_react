@@ -10,11 +10,13 @@ export const DiscoveryStyle = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
     width: 100%;
     height: 100vh;
 
     &__content {
       display: flex;
+
       position: absolute;
       background-color: ${variables.cream2};
       width: 643px;
@@ -304,11 +306,9 @@ export const OurProductsStyle = styled.div`
 
     &__cards {
       margin-top: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 30px;
-      flex-wrap: wrap;
     }
   }
 `;

@@ -19,7 +19,7 @@ export const Navbar = styled.nav`
     text-transform: uppercase;
 
     img {
-      width: 50px;
+      width: 40px;
       height: auto;
     }
   }
@@ -52,8 +52,7 @@ export const Navbar = styled.nav`
       position: relative;
 
       img {
-        display: block;
-        width: 20px; // Установи размер изображений здесь
+        width: 20px;
         height: auto;
       }
 

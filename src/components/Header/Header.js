@@ -5,6 +5,7 @@ import acc from "../../assets/icons/acc.svg";
 import heart from "../../assets/icons/heart.svg";
 import shoppingCart from "../../assets/icons/shoppingCart.svg";
 import search from "../../assets/icons/search.svg";
+
 import { Navbar } from "./styles";
 import { useCart } from "../../context/CartContext";
 import CartModal from "../CartModal";
@@ -35,7 +36,6 @@ const Header = () => {
           <NavLink to="/about">About</NavLink>
           <NavLink to="/contact">Contact</NavLink>
         </div>
-
         <div className="nav-icons">
           <NavLink to="/loginSignup">
             <img src={acc} alt="Account" />
@@ -46,16 +46,13 @@ const Header = () => {
           <NavLink to="/">
             <img src={heart} alt="Wishlist" />
           </NavLink>
-          <span
-            onClick={handleOpenCart}
-            style={{ cursor: "pointer" }}
-            aria-label="Cart"
-          >
+
+          <div onClick={handleOpenCart} style={{ cursor: "pointer" }}>
             <img src={shoppingCart} alt="Cart" />
             {cart.length > 0 && (
               <span className="cart-count">{cart.length}</span>
             )}
-          </span>
+          </div>
         </div>
       </Navbar>
 
