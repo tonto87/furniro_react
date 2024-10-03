@@ -1,20 +1,15 @@
-import React, { useContext, useState } from "react";
-import { AppContext } from "../../context/AppContext";
-import { appActions } from "../../reducer/appReducer";
+import React from "react";
+import FilterShop from "./components/Filter";
+import ShopList from "./components/ShopList";
+import Visit from "./components/Visit";
 
-
-const Shop = () => {
-  const [hidden] = useState(true);
-  const { dispatch } = useContext(AppContext);
-
+const Shop = ({ setCartCount }) => {
   return (
-    <div>
-      <button onClick={() => dispatch({ type: appActions.INCREMENT })}>
-        Increase
-      </button>
-      {/* <Title $hide={hidden}>About Page</Title> */}
-      <p>This is a simple app using React Router, Context, and useReducer.</p>
-    </div>
+    <>
+      <Visit />
+      <FilterShop />
+      <ShopList setCartCount={setCartCount} />
+    </>
   );
 };
 

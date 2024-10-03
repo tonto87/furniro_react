@@ -1,34 +1,31 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  NavLink,
-} from "react-router-dom";
-import Header from "./pages/Header/Header";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Header from "./components/Header/Header";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
+import LoginSignup from "./pages/LoginSignup/LoginSignup";
+import Footer from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound";
-import { AppProvider } from "./context/AppContext";
-import { LangProvider } from "./context/LangContext";
-import { GlobalStyle } from "./styles";
+import { CartProvider } from "./context/CartContext";
+
+import { GlobalStyle } from "./styles/global";
 
 const App = () => {
   return (
-    <LangProvider>
-      <AppProvider>
-        <Router>
-          <GlobalStyle>
-            <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </GlobalStyle>
-        </Router>
-      </AppProvider>
-    </LangProvider>
+    <CartProvider>
+      <Router>
+        <GlobalStyle>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/loginSignup" element={<LoginSignup />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer />
+        </GlobalStyle>
+      </Router>
+    </CartProvider>
   );
 };
 

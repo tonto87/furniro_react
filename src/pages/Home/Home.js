@@ -1,15 +1,19 @@
-import React from "react";
-import Discovery from "../../components/homeComponents/discovery";
-import Browsetherange from "../../components/browsetherange"
+import { React } from "react";
+import Discovery from "./components/Discovery";
+import Browsetherange from "./components/BrowseTheRange";
+import OurProducts from "./components/OurProducts";
+import Inspirations from "./components/Inspirations";
+import Funiro from "./components/Funiro";
 
-const Home = () => {
+const Home = ({ setCartCount }) => {
   return (
-   <>
-   <Discovery/>
-   <Browsetherange/>
-   
-   
-   </>
+    <>
+      <Discovery />
+      <Browsetherange />
+      <OurProducts setCartCount={setCartCount} />
+      <Inspirations />
+      <Funiro />
+    </>
   );
 };
 
