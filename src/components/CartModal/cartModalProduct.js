@@ -1,9 +1,6 @@
-import React from 'react';
+import React from "react";
 
-
-const CartModalProduct = ({product}) => {
-
-
+const CartModalProduct = ({ product }) => {
   return (
     <div className="cartModal__body-products-product">
       <img
@@ -13,34 +10,24 @@ const CartModalProduct = ({product}) => {
       />
       <div className="cartModal__body-products-product-text">
         <h1 className="cartModal__body-products-product-text-heading">
-        {product.name}
+          {product.name}
         </h1>
         <div className="cartModal__body-products-product-text-pricetag">
-          <h1
-            className="cartModal__body-products-product-text-pricetag-count"
-          >
+          <h1 className="cartModal__body-products-product-text-pricetag-count">
             1
           </h1>
-          <h1
-            className="cartModal__body-products-product-text-pricetag-x"
-          >
+          <h1 className="cartModal__body-products-product-text-pricetag-x">
             x
           </h1>
-          <h1
-            className="cartModal__body-products-product-text-pricetag-price"
-          >
+          <h1 className="cartModal__body-products-product-text-pricetag-price">
             ${product.price}
           </h1>
         </div>
       </div>
       <div className="cartModal__body-products-product-box">
-        <button
-          className="cartModal__body-products-product-box-button"
-        ></button>
+        <button className="cartModal__body-products-product-box-button"></button>
       </div>
     </div>
-
-
   );
 };
 

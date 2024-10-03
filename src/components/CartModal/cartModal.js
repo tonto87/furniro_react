@@ -1,10 +1,12 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useCart } from "../../context/CartContext";
 import { CartModalStyle } from "./styles/cartModalStyle";
 import getImagePath from "../../utils/getImgPath";
+import Compare from "../Comprassion";
 
 const CartModal = ({ onClose }) => {
   const { cart, dispatch } = useCart();
+  const [selectedProducts, setSelectedProducts] = useState([]);
 
   const handleRemove = (id) => {
     dispatch({ type: "REMOVE_FROM_CART", id });
@@ -16,6 +18,18 @@ const CartModal = ({ onClose }) => {
 
   const handleDecrement = (id) => {
     dispatch({ type: "DECREMENT_COUNT", id });
+  };
+
+  const handleSelectProduct = (product) => {
+    setSelectedProducts((prev) => {
+      if (prev.length < 2 && !prev.find((p) => p.id === product.id)) {
+        return [...prev, product];
+      } else if (prev.find((p) => p.id === product.id)) {
+        return prev.filter((p) => p.id !== product.id);
+      }
+
+      return prev;
+    });
   };
 
   const totalAmount = useMemo(() => {
@@ -47,13 +61,22 @@ const CartModal = ({ onClose }) => {
                 />
                 <span className="cartModal__product-name">
                   {item.name} (x{item.count})
-                </span>{" "}
-                - ${item.price * item.count}
+                </span>
+                <span className="cartModal__product-price">
+                  ${item.price * item.count}
+                </span>
+
                 <div>
-                  <button onClick={() => handleIncrement(item.id)}>+</button>
+                  <button
+                    onClick={() => handleIncrement(item.id)}
+                    className="cartModal__increment-button"
+                  >
+                    +
+                  </button>
                   <button
                     onClick={() => handleDecrement(item.id)}
                     disabled={item.count <= 1}
+                    className="cartModal__decrement-button"
                   >
                     -
                   </button>
@@ -63,11 +86,22 @@ const CartModal = ({ onClose }) => {
                   >
                     Remove
                   </button>
+                  <button
+                    onClick={() => handleSelectProduct(item)}
+                    className={
+                      selectedProducts.includes(item)
+                        ? "cartModal__select-button-active"
+                        : "cartModal__select-button"
+                    }
+                  >
+                    Select
+                  </button>
                 </div>
               </li>
             ))}
           </ul>
         )}
+
         <div className="cartModal__footer">
           <div className="cartModal__footer-subtotal">
             <h1 className="cartModal__footer-subtotal-price">
@@ -80,10 +114,12 @@ const CartModal = ({ onClose }) => {
             <button className="cartModal__footer-buttons-checkout">
               Checkout
             </button>
-            <button className="cartModal__footer-buttons-comparsion">
-              Comparsion
-            </button>
           </div>
+
+          <Compare
+            product1={selectedProducts[0]}
+            product2={selectedProducts[1]}
+          />
         </div>
       </div>
     </CartModalStyle>
