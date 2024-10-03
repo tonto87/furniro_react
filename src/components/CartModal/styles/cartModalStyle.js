@@ -19,7 +19,7 @@ export const CartModalStyle = styled.div`
     border: 1px solid ${variables.lightgrey};
     width: 100%;
     max-width: 450px;
-    max-height: 50%;
+    max-height: 80%;
     display: flex;
     flex-direction: column;
     border-radius: 8px;
@@ -122,12 +122,11 @@ export const CartModalStyle = styled.div`
 
           &:disabled {
             background: ${variables.smoke};
-
             cursor: not-allowed;
           }
 
           &.cartModal__select-button-active {
-            background: ${variables.grey2};
+            background: ${variables.greenAccents};
           }
         }
       }

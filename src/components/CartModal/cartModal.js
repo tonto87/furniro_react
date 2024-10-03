@@ -22,13 +22,9 @@ const CartModal = ({ onClose }) => {
 
   const handleSelectProduct = (product) => {
     setSelectedProducts((prev) => {
-      if (prev.length < 2 && !prev.find((p) => p.id === product.id)) {
-        return [...prev, product];
-      } else if (prev.find((p) => p.id === product.id)) {
+      if (prev.find((p) => p.id === product.id))
         return prev.filter((p) => p.id !== product.id);
-      }
-
-      return prev;
+      return prev.length < 2 ? [...prev, product] : prev;
     });
   };
 
@@ -94,7 +90,7 @@ const CartModal = ({ onClose }) => {
                         : "cartModal__select-button"
                     }
                   >
-                    Select
+                    Compare
                   </button>
                 </div>
               </li>

@@ -1,6 +1,7 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 
-const Pagination = ({ items, perPage, onClick }) => {
+const Pagination = ({ items, perPage, pageNumber }) => {
+  console.log({ items });
   const [page, setPage] = useState(1);
   const pageNumbers = useMemo(() => {
     return Array.from(
@@ -8,6 +9,10 @@ const Pagination = ({ items, perPage, onClick }) => {
       (_, i) => i + 1
     );
   }, [items, perPage]);
+
+  useEffect(() => {
+    pageNumber(page);
+  }, [page]);
 
   return (
     <div id="myDIV" className="shop__nextButton">
