@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FilterStyle } from "./styles";
 
-const Filter = () => {
-  const [perPage, setPerPage] = useState(4);
+const Filter = ({ perPageChange,pageState }) => {
+  const [perPage, setPerPage] = useState(pageState);
+
+  const handlePerPageChanger = (e) => {
+    setPerPage(e.target.value);
+  };
+
+  useEffect(() => {
+    perPageChange(perPage);
+  }, [perPage]);
 
   return (
     <FilterStyle>
@@ -25,7 +33,7 @@ const Filter = () => {
           <input
             type="number"
             value={perPage}
-            onChange={(e) => setPerPage(e.target.value)}
+            onChange={handlePerPageChanger}
             className="filter__inputs-show-count"
           />
           <span className="filter__inputs-short">Short by</span>
