@@ -14,7 +14,7 @@ const Pagination = ({ items, perPage, setPageNumber, activePage }) => {
 
   useEffect(() => {
     setPageNumber(activePage);
-  }, [page]);
+  }, [activePage]);
 
   return (
     <div id="myDIV" className="shop__nextButton">
