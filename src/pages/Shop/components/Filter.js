@@ -1,12 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { FilterStyle } from "./styles";
 
-const Filter = ({ perPageChange,pageState }) => {
+
+const Filter = ({
+  perPageChange,
+  pageState,
+  setSortByCategory,
+  sortByCategory,
+}) => {
+  const [selectedSort, setSelectedSort] = useState(sortByCategory);
+
   const [perPage, setPerPage] = useState(pageState);
 
   const handlePerPageChanger = (e) => {
     setPerPage(e.target.value);
   };
+
+
+  const handleSelectChange = (e) => {
+    setSelectedSort(e.target.value);
+  };
+  useEffect(() => {
+    setSortByCategory(selectedSort);
+  }, [selectedSort]);
+
 
   useEffect(() => {
     perPageChange(perPage);
@@ -37,11 +54,17 @@ const Filter = ({ perPageChange,pageState }) => {
             className="filter__inputs-show-count"
           />
           <span className="filter__inputs-short">Short by</span>
-          <select className="filter__inputs-select">
-            <option>Default</option>
-            <option>Bedroom</option>
-            <option>Kitchen</option>
-            <option>Diningroom</option>
+          <select
+            className="filter__inputs-select"
+            id="options"
+            value={selectedSort}
+            onChange={handleSelectChange}
+          >
+            <option value="">Default</option>
+            <option value="bedroom">Bedroom</option>
+            <option value="kitchen">Kitchen</option>
+            <option value="diningroom">Diningroom</option>
+            <option value="bathroom">Bathroom</option>
           </select>
         </div>
       </section>

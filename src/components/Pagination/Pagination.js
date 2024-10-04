@@ -1,8 +1,10 @@
 import React, { useMemo, useState, useEffect } from "react";
 
-const Pagination = ({ items, perPage, pageNumber }) => {
-  console.log({ items });
-  const [page, setPage] = useState(1);
+
+const Pagination = ({ items, perPage, setPageNumber, activePage }) => {
+  const handlePageChange = (page) => {
+    setPageNumber(page);
+  };
   const pageNumbers = useMemo(() => {
     return Array.from(
       { length: Math.ceil(items.length / perPage) },
@@ -16,9 +18,9 @@ const Pagination = ({ items, perPage, pageNumber }) => {
 
   return (
     <div id="myDIV" className="shop__nextButton">
-      {page > 1 && (
+      {activePage > 1 && (
         <button
-          onClick={() => setPage(page - 1)}
+          onClick={() => handlePageChange(activePage - 1)}
           className="shop__nextButton-btn"
         >
           prev
@@ -28,16 +30,18 @@ const Pagination = ({ items, perPage, pageNumber }) => {
       {pageNumbers.map((number) => (
         <button
           key={number}
-          className={`shop__nextButton-btn ${number === page && "active"}`}
-          onClick={() => setPage(number)}
+          className={`shop__nextButton-btn ${
+            number === activePage && "active"
+          }`}
+          onClick={() => handlePageChange(number)}
         >
           {number}
         </button>
       ))}
 
-      {page < pageNumbers.length && (
+      {activePage < pageNumbers.length && (
         <button
-          onClick={() => setPage(page + 1)}
+          onClick={() => handlePageChange(activePage + 1)}
           className="shop__nextButton-btn"
         >
           next
