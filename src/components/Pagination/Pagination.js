@@ -13,7 +13,7 @@ const Pagination = ({ items, perPage, setPageNumber, activePage }) => {
   }, [items, perPage]);
 
   useEffect(() => {
-    pageNumber(page);
+    setPageNumber(activePage);
   }, [page]);
 
   return (
