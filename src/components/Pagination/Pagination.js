@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useEffect } from "react";
 
+
 const Pagination = ({ items, perPage, setPageNumber, activePage }) => {
   const handlePageChange = (page) => {
     setPageNumber(page);
@@ -10,6 +11,10 @@ const Pagination = ({ items, perPage, setPageNumber, activePage }) => {
       (_, i) => i + 1
     );
   }, [items, perPage]);
+
+  useEffect(() => {
+    pageNumber(page);
+  }, [page]);
 
   return (
     <div id="myDIV" className="shop__nextButton">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FilterStyle } from "./styles";
 
+
 const Filter = ({
   perPageChange,
   pageState,
@@ -8,11 +9,13 @@ const Filter = ({
   sortByCategory,
 }) => {
   const [selectedSort, setSelectedSort] = useState(sortByCategory);
+
   const [perPage, setPerPage] = useState(pageState);
 
   const handlePerPageChanger = (e) => {
     setPerPage(e.target.value);
   };
+
 
   const handleSelectChange = (e) => {
     setSelectedSort(e.target.value);
@@ -20,6 +23,7 @@ const Filter = ({
   useEffect(() => {
     setSortByCategory(selectedSort);
   }, [selectedSort]);
+
 
   useEffect(() => {
     perPageChange(perPage);

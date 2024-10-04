@@ -34,6 +34,7 @@ const shopReducer = (state, action) => {
         ...state,
         products: [...action.payload],
       };
+
     case shopActionTypes.SET_SORT_BY_CATEGORY:
       return {
         ...state,
@@ -42,6 +43,7 @@ const shopReducer = (state, action) => {
           sortByCategory: action.payload,
         },
       };
+
 
     default:
       break;
@@ -58,6 +60,7 @@ const Shop = ({}) => {
   const handlePerPage = (perPageFilter) => {
     dispatch({ type: shopActionTypes.SET_PER_PAGE, payload: perPageFilter });
   };
+
 
   const handleSortCategory = (selectedSort) => {
     // console.log(selectedSort);
@@ -77,9 +80,11 @@ const Shop = ({}) => {
 
   // console.log({sortedProducts,pros: state.products,sort: state.filter.sortBy});
 
+
   return (
     <>
       <Visit />
+
       <Filter
         perPageChange={handlePerPage}
         pageState={state.filter.perPage}
@@ -91,6 +96,7 @@ const Shop = ({}) => {
         pageState={state.filter.perPage}
         activePage={state.page}
       />
+
     </>
   );
 };

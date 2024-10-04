@@ -3,9 +3,11 @@ import { OurShopStyle } from "./styles";
 import Card from "../../../atoms/Card";
 import Pagination from "../../../components/Pagination";
 
+
 const ShopList = ({ products, pageState, activePage }) => {
   const [selected, setSelected] = useState([]);
   const [pageNumber, setPageNumber] = useState(activePage);
+
 
   const handlePageNumber = (page) => {
     setPageNumber(page);
@@ -13,7 +15,9 @@ const ShopList = ({ products, pageState, activePage }) => {
   };
 
   useEffect(() => {
+
     handlePageNumber(activePage);
+
   }, [pageState, products]);
 
   return (
@@ -29,8 +33,10 @@ const ShopList = ({ products, pageState, activePage }) => {
         <Pagination
           items={products}
           perPage={pageState}
+
           setPageNumber={handlePageNumber}
           activePage={pageNumber}
+
         />
       </section>
     </OurShopStyle>
