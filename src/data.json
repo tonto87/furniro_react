@@ -4,63 +4,72 @@
       "id": 1,
       "img": "image1.png",
       "name": "Wireless Headphones",
-      "paragraph": "Dining",
+      "paragraph": "bathroomm",
+      "category": "bedroom",
       "price": 89.99
     },
     {
       "id": 2,
       "img": "image2.png",
       "name": "Smart Watch",
-      "paragraph": "Bed",
+      "paragraph": "bathroomm",
+      "category": "bedroom",
       "price": 149.99
     },
     {
       "id": 3,
       "img": "image3.png",
       "name": "Gaming Mouse",
-      "paragraph": "Kitchen",
+      "paragraph": "bathroomm",
+      "category": "kitchen",
       "price": 49.99
     },
     {
       "id": 4,
       "img": "image4.png",
       "name": "4K Monitor",
-      "paragraph": "mitchen",
+      "paragraph": "bathroomm",
+      "category": "kitchen",
       "price": 299.99
     },
     {
       "id": 5,
       "img": "image9.png",
       "name": "Bluetooth Speaker",
-      "paragraph": "bathroom",
+      "paragraph": "bathroomm",
+      "category": "diningroom",
       "price": 59.99
     },
     {
       "id": 6,
       "img": "image6.png",
       "name": "Mechanical Keyboard",
-      "paragraph": "toilet",
+      "paragraph": "bathroomm",
+      "category": "diningroom",
       "price": 79.99
     },
     {
       "id": 7,
       "img": "image7.png",
       "name": "USB-C Hub",
-      "paragraph": "qostinniy",
+      "paragraph": "bathroomm",
+      "category": "bathroom",
       "price": 34.99
     },
     {
       "id": 8,
       "img": "image8.png",
       "name": "Laptop Stand",
-      "paragraph": "detskiy",
+      "paragraph": "bathroomm",
+      "category": "bathroom",
       "price": 39.99
     },
     {
       "id": 9,
       "img": "image9.png",
       "name": "Laptop Stand",
-      "paragraph": "detskiy",
+      "paragraph": "bathroomm",
+      "category": "bathroom",
       "price": 39.99
     }
   ]
