@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FilterStyle } from "./styles";
-
+import data from "../../../data.json";
 
 const Filter = ({
   perPageChange,
@@ -16,14 +16,12 @@ const Filter = ({
     setPerPage(e.target.value);
   };
 
-
   const handleSelectChange = (e) => {
     setSelectedSort(e.target.value);
   };
   useEffect(() => {
     setSortByCategory(selectedSort);
   }, [selectedSort]);
-
 
   useEffect(() => {
     perPageChange(perPage);
@@ -42,7 +40,7 @@ const Filter = ({
             <a className="filter__buttons-listing-viewlist" href=""></a>
           </div>
           <span className="filter__result-text">
-            Showing 1–16 of 32 results
+            Showing {perPage} of {data.products.length} results
           </span>
         </div>
         <div className="filter__inputs">
