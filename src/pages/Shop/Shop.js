@@ -8,12 +8,14 @@ const shopActionTypes = {
   SET_PER_PAGE: "set_per_page",
   SET_PRODUCTS: "set_products",
   SET_SORT_BY_CATEGORY: "set_sort_by",
+  SET_DIRECTION_CHANGER: "set_direction_changer",
 };
 
 const initialShopState = {
   filter: {
     perPage: 4,
     sortByCategory: "",
+    flexDirection: "shop__cards-row",
   },
   products: [],
   page: 1,
@@ -43,7 +45,14 @@ const shopReducer = (state, action) => {
           sortByCategory: action.payload,
         },
       };
-
+      case shopActionTypes.SET_DIRECTION_CHANGER:
+        return {
+          ...state,
+          filter: {
+            ...state.filter,
+            flexDirection: action.payload,
+          },
+        };
 
     default:
       break;
@@ -57,13 +66,13 @@ const Shop = ({}) => {
     dispatch({ type: shopActionTypes.SET_PRODUCTS, payload: data.products });
   }, [data]);
 
+
+
   const handlePerPage = (perPageFilter) => {
     dispatch({ type: shopActionTypes.SET_PER_PAGE, payload: perPageFilter });
   };
 
-
   const handleSortCategory = (selectedSort) => {
-    // console.log(selectedSort);
     dispatch({
       type: shopActionTypes.SET_SORT_BY_CATEGORY,
       payload: selectedSort,
@@ -78,8 +87,12 @@ const Shop = ({}) => {
     );
   }, [state.products, state.filter.sortByCategory]);
 
-  // console.log({sortedProducts,pros: state.products,sort: state.filter.sortBy});
-
+  const handleDirectionChanger = (selectedChanger) => {
+    dispatch({
+      type: shopActionTypes.SET_DIRECTION_CHANGER,
+      payload: selectedChanger,
+    });
+  };
 
   return (
     <>
@@ -90,13 +103,15 @@ const Shop = ({}) => {
         pageState={state.filter.perPage}
         setSortByCategory={handleSortCategory}
         sortByCategory={state.filter.sortByCategory}
+        flexChanger={handleDirectionChanger}
+        flexState={state.filter.flexDirection}
       />
       <ShopList
         products={filteredProducts}
         pageState={state.filter.perPage}
         activePage={state.page}
+        flexState={state.filter.flexDirection}
       />
-
     </>
   );
 };

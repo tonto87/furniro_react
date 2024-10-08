@@ -3,10 +3,12 @@ import { useCart } from "../../context/CartContext";
 import { CartModalStyle } from "./styles/cartModalStyle";
 import getImagePath from "../../utils/getImgPath";
 import Compare from "../Comprassion";
+import { useNavigate } from "react-router-dom";
 
 const CartModal = ({ onClose }) => {
   const { cart, dispatch } = useCart();
   const [selectedProducts, setSelectedProducts] = useState([]);
+  const navigate = useNavigate();
 
   const handleRemove = (id) => {
     dispatch({ type: "REMOVE_FROM_CART", id });
@@ -31,6 +33,11 @@ const CartModal = ({ onClose }) => {
   const totalAmount = useMemo(() => {
     return cart.reduce((acc, item) => acc + item.price * item.count, 0);
   }, [cart]);
+
+  const handleCheckout = () => {
+    navigate("/checkout", { state: { cart } });
+    onClose();
+  };
 
   return (
     <CartModalStyle onClick={onClose}>
@@ -61,7 +68,6 @@ const CartModal = ({ onClose }) => {
                 <span className="cartModal__product-price">
                   ${item.price * item.count}
                 </span>
-
                 <div>
                   <button
                     onClick={() => handleIncrement(item.id)}
@@ -97,7 +103,6 @@ const CartModal = ({ onClose }) => {
             ))}
           </ul>
         )}
-
         <div className="cartModal__footer">
           <div className="cartModal__footer-subtotal">
             <h1 className="cartModal__footer-subtotal-price">
@@ -107,11 +112,13 @@ const CartModal = ({ onClose }) => {
           <div className="cartModal__footer-line"></div>
           <div className="cartModal__footer-buttons">
             <button className="cartModal__footer-buttons-cart">Cart</button>
-            <button className="cartModal__footer-buttons-checkout">
+            <button
+              className="cartModal__footer-buttons-checkout"
+              onClick={handleCheckout}
+            >
               Checkout
             </button>
           </div>
-
           <Compare
             product1={selectedProducts[0]}
             product2={selectedProducts[1]}

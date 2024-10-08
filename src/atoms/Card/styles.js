@@ -2,13 +2,17 @@ import styled from "styled-components";
 import { variables } from "../../styles/variables";
 
 export const CardStyle = styled.div`
+  flex-basis: calc(25% - 30px);
   .card {
     display: flex;
 
     /* width: 285px; */
     flex-direction: column;
     position: relative;
-    flex-basis: calc(25% - 32px);
+
+    &__img{
+      width: 100%;
+    }
 
     &__ellipse {
       position: absolute;
@@ -45,6 +49,7 @@ export const CardStyle = styled.div`
         font-weight: 600;
         line-height: 120%;
         padding-bottom: 8px;
+        min-height: 66px;
       }
 
       &-name {
