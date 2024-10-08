@@ -4,7 +4,7 @@ import Card from "../../../atoms/Card";
 import Pagination from "../../../components/Pagination";
 
 
-const ShopList = ({ products, pageState, activePage }) => {
+const ShopList = ({ products, pageState, activePage,flexState }) => {
   const [selected, setSelected] = useState([]);
   const [pageNumber, setPageNumber] = useState(activePage);
 
@@ -24,7 +24,7 @@ const ShopList = ({ products, pageState, activePage }) => {
     <OurShopStyle>
       <section className="shop">
         <h1 className="shop__title">Our shops</h1>
-        <div className="shop__cards">
+        <div className={flexState}>
           {selected.map((product) => (
             <Card key={product.id} product={product} />
           ))}

@@ -205,8 +205,9 @@ export const FilterStyle = styled.div`
 `;
 
 export const OurShopStyle = styled.div`
+
   .shop {
-    padding: 56px 102px 69px;
+    padding: 56px 102px;
 
     @media screen and (width >= 1024px) {
       gap: 27px;
@@ -251,12 +252,25 @@ export const OurShopStyle = styled.div`
       line-height: 120%; /* 48px */
     }
 
-    &__cards {
+    &__cards-row {
       margin-top: 32px;
       display: flex;
+      justify-content:space-between;
       align-items: center;
       gap: 30px;
       flex-wrap: wrap;
+      flex-direction: row;
+      
+    }
+    &__cards-column {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content:center;
+
+      gap: 30px;
+      flex-wrap: wrap;
+      flex-direction: column;
     }
   }
 `;

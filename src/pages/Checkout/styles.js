@@ -16,6 +16,7 @@ export const CheckoutStyle = styled.div`
     h1 {
       font-size: 2rem;
       text-align: center;
+      margin: 0;
     }
   }
 
@@ -45,16 +46,22 @@ export const CheckoutStyle = styled.div`
         border-radius: 4px;
         font-family: ${variables.fonts.montserrat};
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.2s ease;
+
+        &:focus {
+          box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+          outline: none;
+        }
       }
 
       button {
-        background-color: #007bff;
+        background-color: ${variables.cream2};
         color: ${variables.fontColor};
         border: none;
         padding: 0.5rem 1rem;
         cursor: pointer;
         border-radius: 4px;
-        background-color: ${variables.cream2};
+        transition: background-color 0.3s ease;
 
         &:hover {
           background-color: ${variables.cream};
@@ -64,15 +71,28 @@ export const CheckoutStyle = styled.div`
 
     .order-summary-container {
       display: flex;
-      width: 500px;
       flex-direction: column;
+      width: 500px;
 
       h2 {
         margin-bottom: 1rem;
       }
 
       .order-summary-item {
+        display: flex;
+        align-items: center;
         margin-bottom: 10px;
+
+        img {
+          max-width: 60px;
+          height: auto;
+
+          border-radius: 4px;
+        }
+      }
+
+      .order-summary-item p {
+        margin: 0;
       }
     }
   }

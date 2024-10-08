@@ -13,12 +13,13 @@ const Card = ({ product }) => {
   const handleAddToCart = () => {
     try {
       dispatch({ type: "ADD_TO_CART", product });
-      setIsAdded(true); // Показываем, что продукт добавлен
-      setTimeout(() => setIsAdded(false), 2000); // Скрываем через 2 секунды
+      setIsAdded(true);
+      setTimeout(() => setIsAdded(false), 2000);
     } catch (error) {
       console.error("Error adding to cart:", error);
     }
   };
+  // console.log(product.price)
 
   return (
     <CardStyle>

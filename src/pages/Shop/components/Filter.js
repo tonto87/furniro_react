@@ -7,13 +7,22 @@ const Filter = ({
   pageState,
   setSortByCategory,
   sortByCategory,
+  flexChanger,
+  flexState
 }) => {
   const [selectedSort, setSelectedSort] = useState(sortByCategory);
 
   const [perPage, setPerPage] = useState(pageState);
 
+  const [flexDirection, setFlexDirection] = useState(flexState);
+  // console.log(flexState);
+
   const handlePerPageChanger = (e) => {
     setPerPage(e.target.value);
+  };
+
+  const handleflexDirection = (e) => {
+    setFlexDirection(e);
   };
 
   const handleSelectChange = (e) => {
@@ -27,6 +36,10 @@ const Filter = ({
     perPageChange(perPage);
   }, [perPage]);
 
+  useEffect(() => {
+    flexChanger(flexDirection);
+  }, [flexDirection]);
+
   return (
     <FilterStyle>
       <section className="filter">
@@ -36,8 +49,16 @@ const Filter = ({
             <h1 className="filter__buttons-filtering-h1">Filter</h1>
           </div>
           <div className="filter__buttons-listing">
-            <a className="filter__buttons-listing-grid" href=""></a>
-            <a className="filter__buttons-listing-viewlist" href=""></a>
+            <button
+              className="filter__buttons-listing-grid"
+              onClick={() => handleflexDirection("shop__cards-row")}
+              href=""
+            ></button>
+            <button
+              className="filter__buttons-listing-viewlist"
+              onClick={() => handleflexDirection("shop__cards-column")}
+              href=""
+            ></button>
           </div>
           <span className="filter__result-text">
             Showing {perPage} of {data.products.length} results
