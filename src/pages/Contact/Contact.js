@@ -21,8 +21,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Здесь вы можете добавить логику отправки данных формы
-    console.log("Форма отправлена:", formData);
   };
 
   return (
@@ -30,10 +28,12 @@ const Contact = () => {
       <div className="contact-cover">
         <h1>Contact Us</h1>
       </div>
-
+      <h2 className="get">
+        Get In Touch With Us For More Information About Our Product & Services.
+        Please Feel Free To Drop Us An Email. Our Staff Always Be There To Help
+        You Out. Do Not Hesitate!
+      </h2>
       <div className="contact-container">
-        {" "}
-        {/* Новый контейнер для выстраивания в ряд */}
         <div className="contact-info">
           <div className="info-item">
             <img src={location} alt="Location" />

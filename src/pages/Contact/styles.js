@@ -3,6 +3,13 @@ import { variables } from "../../styles/variables";
 import shopCover from "../../assets/images/shopcover.png";
 
 export const ContactStyle = styled.div`
+  .get {
+    font-family: ${variables.fonts.montserrat};
+    text-align: center;
+    font-size: 16px;
+    width: 400px;
+    margin: 0 auto;
+  }
   .contact-cover {
     font-family: ${variables.fonts.montserrat};
     display: flex;
@@ -83,6 +90,43 @@ export const ContactStyle = styled.div`
         &:hover {
           background-color: ${variables.cream};
         }
+      }
+    }
+  }
+
+  // Media queries for responsiveness
+  @media (max-width: 768px) {
+    .contact-container {
+      flex-direction: column;
+      gap: 20px;
+
+      .contact-info {
+        flex: 1; // Makes contact-info full width on smaller screens
+      }
+
+      form {
+        max-width: 100%; // Makes form full width on smaller screens
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-cover h1 {
+      font-size: 1.5rem; // Smaller font size for smaller screens
+    }
+
+    .contact-container {
+      gap: 10px;
+    }
+
+    form {
+      input,
+      textarea {
+        padding: 0.4rem; // Smaller padding for inputs on smaller screens
+      }
+
+      button {
+        padding: 0.4rem; // Smaller button padding on smaller screens
       }
     }
   }
