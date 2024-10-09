@@ -10,7 +10,7 @@ export const CardStyle = styled.div`
     flex-direction: column;
     position: relative;
 
-    &__img{
+    &__img {
       width: 100%;
     }
 
@@ -43,6 +43,7 @@ export const CardStyle = styled.div`
       background: ${variables.lightBG};
 
       &-title {
+        cursor: pointer;
         color: ${variables.grey1};
         font-size: 24px;
         font-style: normal;
@@ -88,7 +89,7 @@ export const CardStyle = styled.div`
       position: absolute;
       display: flex;
       width: 100%;
-      height: 100%;
+      height: 70%;
       opacity: 0;
       background: ${variables.grey1};
       top: auto;

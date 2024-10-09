@@ -5,10 +5,12 @@ import compare from "../../assets/icons/compare-svgrepo-com 1.svg";
 import heart from "../../assets/icons/heart.svg";
 import { useCart } from "../../context/CartContext";
 import getImagePath from "../../utils/getImgPath";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ product }) => {
   const { dispatch } = useCart();
   const [isAdded, setIsAdded] = useState(false);
+  const navigate = useNavigate();
 
   const handleAddToCart = () => {
     try {
@@ -19,7 +21,14 @@ const Card = ({ product }) => {
       console.error("Error adding to cart:", error);
     }
   };
-  // console.log(product.price)
+
+  const handleCardSelect = (e) => {
+    try {
+      navigate(`/product/${product.name}`, { state: { product } });
+    } catch (error) {
+      console.error("No card select", error);
+    }
+  };
 
   return (
     <CardStyle>
@@ -30,7 +39,9 @@ const Card = ({ product }) => {
           alt={product.name}
         />
         <div className="card__main">
-          <h1 className="card__main-title">{product.name}</h1>
+          <h1 className="card__main-title" onClick={handleCardSelect}>
+            {product.name}
+          </h1>
           <p className="card__main-name">{product.paragraph}</p>
           <div className="card__prices">
             <p className="card__price-now">${product.price}</p>

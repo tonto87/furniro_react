@@ -5,10 +5,9 @@ import getImagePath from "../../utils/getImgPath";
 
 const Checkout = () => {
   const location = useLocation();
- 
+
   const { cart } = location.state || { cart: [] };
-  
-  console.log(cart[0])
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -20,8 +19,6 @@ const Checkout = () => {
     email: "",
   });
 
-
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -32,7 +29,10 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Логика для отправки данных на сервер или обработки заказа
+    console.log("Заказ оформлен:", formData);
 
+    // Сброс данных формы
     setFormData({
       firstName: "",
       lastName: "",
@@ -43,6 +43,8 @@ const Checkout = () => {
       phone: "",
       email: "",
     });
+
+    alert("Ваш заказ успешно оформлен!");
   };
 
   const totalAmount = cart.reduce(

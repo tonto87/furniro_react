@@ -3,7 +3,7 @@
     {
       "id": 1,
       "img": "image1.png",
-      "name": "Wireless Headphones",
+      "name": "Table",
       "paragraph": "bathroomm",
       "category": "bedroom",
       "price": 89.99
@@ -11,64 +11,64 @@
     {
       "id": 2,
       "img": "image2.png",
-      "name": "Smart Watch",
-      "paragraph": "bathroomm",
+      "name": "Chair",
+      "paragraph": "Chair",
       "category": "bedroom",
       "price": 149.99
     },
     {
       "id": 3,
       "img": "image3.png",
-      "name": "Gaming Mouse",
-      "paragraph": "bathroomm",
+      "name": "Sofa",
+      "paragraph": "Sofa",
       "category": "kitchen",
       "price": 49.99
     },
     {
       "id": 4,
       "img": "image4.png",
-      "name": "4K Monitor",
-      "paragraph": "bathroomm",
+      "name": "Sofa-table",
+      "paragraph": "Sofa and Table",
       "category": "kitchen",
       "price": 299.99
     },
     {
       "id": 5,
       "img": "image9.png",
-      "name": "Bluetooth Speaker",
-      "paragraph": "bathroomm",
+      "name": "Lamp",
+      "paragraph": "Lamp White",
       "category": "diningroom",
       "price": 59.99
     },
     {
       "id": 6,
       "img": "image6.png",
-      "name": "Mechanical Keyboard",
-      "paragraph": "bathroomm",
+      "name": "Sofa-grey",
+      "paragraph": "Grey Sofa",
       "category": "diningroom",
       "price": 79.99
     },
     {
       "id": 7,
       "img": "image7.png",
-      "name": "USB-C Hub",
-      "paragraph": "bathroomm",
+      "name": "Sofa3",
+      "paragraph": "Sofa3",
       "category": "bathroom",
       "price": 34.99
     },
     {
       "id": 8,
       "img": "image8.png",
-      "name": "Laptop Stand",
-      "paragraph": "bathroomm",
+      "name": "Sofa red",
+      "paragraph": "Sofa red",
       "category": "bathroom",
       "price": 39.99
     },
     {
       "id": 9,
       "img": "image9.png",
-      "name": "Laptop Stand",
-      "paragraph": "bathroomm",
+      "name": "Lamp Stand",
+      "paragraph": "Lamp Stand",
       "category": "bathroom",
       "price": 39.99
     }
