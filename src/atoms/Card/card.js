@@ -33,21 +33,7 @@ const Card = ({ product }) => {
   return (
     <CardStyle>
       <div className="card">
-        <img
-          className="card__img"
-          src={getImagePath(product.img)}
-          alt={product.name}
-        />
-        <div className="card__main">
-          <h1 className="card__main-title" onClick={handleCardSelect}>
-            {product.name}
-          </h1>
-          <p className="card__main-name">{product.paragraph}</p>
-          <div className="card__prices">
-            <p className="card__price-now">${product.price}</p>
-          </div>
-        </div>
-        <div className="card__hovered">
+        <div className="card__hovered" onClick={handleCardSelect}>
           <button className="card__hovered-btn" onClick={handleAddToCart}>
             {isAdded ? "Added!" : "Add to cart"}
           </button>
@@ -64,6 +50,18 @@ const Card = ({ product }) => {
               <img src={heart} alt="Like" />
               <h4>Like</h4>
             </a>
+          </div>
+        </div>
+        <img
+          className="card__img"
+          src={getImagePath(product.img)}
+          alt={product.name}
+        />
+        <div className="card__main">
+          <h1 className="card__main-title">{product.name}</h1>
+          <p className="card__main-name">{product.paragraph}</p>
+          <div className="card__prices">
+            <p className="card__price-now">${product.price}</p>
           </div>
         </div>
       </div>
