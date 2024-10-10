@@ -23,6 +23,7 @@ const Filter = ({
 
   const handleflexDirection = (e) => {
     setFlexDirection(e);
+    
   };
 
   const handleSelectChange = (e) => {

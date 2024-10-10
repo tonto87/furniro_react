@@ -7,7 +7,10 @@ export const CardStyle = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
-
+    &__header {
+      display:flex;
+      position: relative;
+    }
     &__img {
       width: 100%;
     }
@@ -93,7 +96,7 @@ export const CardStyle = styled.div`
         line-height: 150%;
         cursor: pointer;
         border: none;
-        z-index:1;
+        z-index: 1;
       }
 
       &-icons {

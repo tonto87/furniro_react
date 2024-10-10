@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useReducer, useState } from "react";
+import { useLocation, useHistory } from "react-router-dom";
+
 import Filter from "./components/Filter";
 import ShopList from "./components/ShopList";
 import Visit from "./components/Visit";
@@ -45,14 +47,14 @@ const shopReducer = (state, action) => {
           sortByCategory: action.payload,
         },
       };
-      case shopActionTypes.SET_DIRECTION_CHANGER:
-        return {
-          ...state,
-          filter: {
-            ...state.filter,
-            flexDirection: action.payload,
-          },
-        };
+    case shopActionTypes.SET_DIRECTION_CHANGER:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          flexDirection: action.payload,
+        },
+      };
 
     default:
       break;
@@ -65,8 +67,6 @@ const Shop = ({}) => {
   useEffect(() => {
     dispatch({ type: shopActionTypes.SET_PRODUCTS, payload: data.products });
   }, [data]);
-
-
 
   const handlePerPage = (perPageFilter) => {
     dispatch({ type: shopActionTypes.SET_PER_PAGE, payload: perPageFilter });
