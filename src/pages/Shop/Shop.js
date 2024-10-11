@@ -1,6 +1,4 @@
-import React, { useEffect, useMemo, useReducer, useState } from "react";
-import { useLocation, useHistory } from "react-router-dom";
-
+import React, { useEffect, useMemo, useReducer } from "react";
 import Filter from "./components/Filter";
 import ShopList from "./components/ShopList";
 import Visit from "./components/Visit";
@@ -11,6 +9,7 @@ const shopActionTypes = {
   SET_PRODUCTS: "set_products",
   SET_SORT_BY_CATEGORY: "set_sort_by",
   SET_DIRECTION_CHANGER: "set_direction_changer",
+  SET_PRICE_FILTER: "set_price_filter", // добавляем действие для фильтра по цене
 };
 
 const initialShopState = {
@@ -18,6 +17,8 @@ const initialShopState = {
     perPage: 4,
     sortByCategory: "",
     flexDirection: "shop__cards-row",
+    minPrice: 0, // минимальная цена
+    maxPrice: 1000, // максимальная цена
   },
   products: [],
   page: 1,
@@ -38,7 +39,6 @@ const shopReducer = (state, action) => {
         ...state,
         products: [...action.payload],
       };
-
     case shopActionTypes.SET_SORT_BY_CATEGORY:
       return {
         ...state,
@@ -55,13 +55,21 @@ const shopReducer = (state, action) => {
           flexDirection: action.payload,
         },
       };
-
+    case shopActionTypes.SET_PRICE_FILTER:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          minPrice: action.payload.minPrice,
+          maxPrice: action.payload.maxPrice,
+        },
+      };
     default:
       break;
   }
 };
 
-const Shop = ({}) => {
+const Shop = () => {
   const [state, dispatch] = useReducer(shopReducer, initialShopState);
 
   useEffect(() => {
@@ -79,13 +87,27 @@ const Shop = ({}) => {
     });
   };
 
+  const handlePriceChange = (minPrice, maxPrice) => {
+    dispatch({
+      type: shopActionTypes.SET_PRICE_FILTER,
+      payload: { minPrice, maxPrice },
+    });
+  };
+
   const filteredProducts = useMemo(() => {
     return state.products.filter(
       (product) =>
-        state.filter.sortByCategory === "" ||
-        product.category === state.filter.sortByCategory
+        (state.filter.sortByCategory === "" ||
+          product.category === state.filter.sortByCategory) &&
+        product.price >= state.filter.minPrice &&
+        product.price <= state.filter.maxPrice
     );
-  }, [state.products, state.filter.sortByCategory]);
+  }, [
+    state.products,
+    state.filter.sortByCategory,
+    state.filter.minPrice,
+    state.filter.maxPrice,
+  ]);
 
   const handleDirectionChanger = (selectedChanger) => {
     dispatch({
@@ -97,7 +119,6 @@ const Shop = ({}) => {
   return (
     <>
       <Visit />
-
       <Filter
         perPageChange={handlePerPage}
         pageState={state.filter.perPage}
@@ -105,6 +126,7 @@ const Shop = ({}) => {
         sortByCategory={state.filter.sortByCategory}
         flexChanger={handleDirectionChanger}
         flexState={state.filter.flexDirection}
+        onPriceChange={handlePriceChange} // передаем функцию фильтрации по цене
       />
       <ShopList
         products={filteredProducts}
