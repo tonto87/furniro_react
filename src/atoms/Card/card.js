@@ -21,6 +21,7 @@ const Card = ({ product }) => {
       console.error("Error adding to cart:", error);
     }
   };
+  // console.log(product.price)
 
   const handleCardSelect = (e) => {
     try {

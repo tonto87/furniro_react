@@ -265,6 +265,7 @@ export const FilterStyle = styled.div`
 `;
 
 export const OurShopStyle = styled.div`
+
   .shop {
     padding: 56px 102px;
 
@@ -314,8 +315,21 @@ export const OurShopStyle = styled.div`
     &__cards-row {
       margin-top: 32px;
       display: flex;
+      justify-content:space-between;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      flex-direction: row;
+      
+    }
+    &__cards-column {
+
+      margin-top: 32px;
+      display: flex;
       justify-content: space-between;
       align-items: center;
+      justify-content:center;
+
       gap: 30px;
       flex-wrap: wrap;
       flex-direction: row;
