@@ -17,9 +17,7 @@ const Filter = ({
   const [selectedSort, setSelectedSort] = useState(sortByCategory);
   const [perPage, setPerPage] = useState(pageState);
   const [flexDirection, setFlexDirection] = useState(flexState);
-  const [isModalOpen, setIsModalOpen] = useState(false); // состояние для открытия/закрытия модалки
-
-  const [flexDirection, setFlexDirection] = useState(flexState);
+  const [isModalOpen, setIsModalOpen] = useState(false); // состояние для открытия/закрытия модалки  
   // console.log(flexState);
 
   const handlePerPageChanger = (e) => {
