@@ -5,12 +5,17 @@ export const CardStyle = styled.div`
   flex-basis: calc(25% - 30px);
   .card {
     display: flex;
-
-    /* width: 285px; */
     flex-direction: column;
     position: relative;
 
+    &__header {
+      display:flex;
+      position: relative;
+    }
+
+
     &__img{
+
       width: 100%;
     }
 
@@ -21,20 +26,11 @@ export const CardStyle = styled.div`
       width: 48px;
       height: 48px;
       border-radius: 100%;
-      border: none;
       background-color: ${variables.redAccents};
       color: ${variables.white};
 
       &--new {
-        position: absolute;
-        top: 24px;
-        right: 24px;
-        width: 48px;
-        height: 48px;
-        border-radius: 100%;
-        border: none;
         background-color: ${variables.greenAccents};
-        color: ${variables.white};
       }
     }
 
@@ -43,9 +39,9 @@ export const CardStyle = styled.div`
       background: ${variables.lightBG};
 
       &-title {
+        cursor: pointer;
         color: ${variables.grey1};
         font-size: 24px;
-        font-style: normal;
         font-weight: 600;
         line-height: 120%;
         padding-bottom: 8px;
@@ -55,7 +51,6 @@ export const CardStyle = styled.div`
       &-name {
         color: ${variables.grey3};
         font-size: 16px;
-        font-style: normal;
         font-weight: 500;
         line-height: 150%; /* 24px */
       }
@@ -70,7 +65,6 @@ export const CardStyle = styled.div`
     &__price-now {
       color: ${variables.grey1};
       font-size: 20px;
-      font-style: normal;
       font-weight: 600;
       line-height: 150%; /* 30px */
     }
@@ -78,7 +72,6 @@ export const CardStyle = styled.div`
     &__price-decrese {
       color: ${variables.grey4};
       font-size: 16px;
-      font-style: normal;
       font-weight: 400;
       line-height: 150%;
       text-decoration-line: strikethrough;
@@ -88,14 +81,14 @@ export const CardStyle = styled.div`
       position: absolute;
       display: flex;
       width: 100%;
-      height: 100%;
       opacity: 0;
       background: ${variables.grey1};
-      top: auto;
-      right: auto;
+      top: 0;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
+      cursor: pointer;
+      height: 100%;
 
       &-btn {
         width: 202px;
@@ -103,62 +96,38 @@ export const CardStyle = styled.div`
         background: ${variables.white};
         color: ${variables.primary};
         font-size: 16px;
-        font-style: normal;
         font-weight: 600;
-        line-height: 150%; /* 24px */
+        line-height: 150%;
         cursor: pointer;
         border: none;
+        z-index: 1;
       }
 
       &-icons {
-        /* Сверху | Справа | Снизу | Слева */
-        padding: 34px 16px 175px;
         display: flex;
-        gap: 20px;
+        gap: 10px;
       }
 
-      &-shareIcon {
-        display: flex;
-        text-decoration: none;
-        color: ${variables.white};
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 150%; /* 24px */
-        gap: 2px;
-      }
-
-      &-compare {
-        display: flex;
-        color: ${variables.white};
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 150%; /* 24px */
-        gap: 2px;
-        text-decoration: none;
-        img {
-          width: 20px;
-        }
-      }
-
+      &-shareIcon,
+      &-compare,
       &-like {
         display: flex;
         color: ${variables.white};
         font-size: 16px;
-        font-style: normal;
         font-weight: 600;
-        line-height: 150%; /* 24px */
-        gap: 2px;
+        line-height: 150%;
         text-decoration: none;
+        gap: 2px;
+      }
+
+      &-compare img {
+        width: 20px;
       }
     }
 
     &:hover {
-      // stylelint-disable-next-line
       .card__hovered {
         opacity: 0.72;
-        transform: none;
       }
     }
   }

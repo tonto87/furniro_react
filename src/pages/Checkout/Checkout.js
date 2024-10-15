@@ -5,10 +5,11 @@ import getImagePath from "../../utils/getImgPath";
 
 const Checkout = () => {
   const location = useLocation();
- 
+
+
   const { cart } = location.state || { cart: [] };
-  
-  console.log(cart[0])
+
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -19,7 +20,6 @@ const Checkout = () => {
     phone: "",
     email: "",
   });
-
 
 
   const handleChange = (e) => {
@@ -43,6 +43,7 @@ const Checkout = () => {
       phone: "",
       email: "",
     });
+
   };
 
   const totalAmount = cart.reduce(

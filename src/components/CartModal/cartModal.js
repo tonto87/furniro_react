@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const CartModal = ({ onClose }) => {
   const { cart, dispatch } = useCart();
+
   const [selectedProducts, setSelectedProducts] = useState([]);
   const navigate = useNavigate();
 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FilterStyle } from "./styles";
 import data from "../../../data.json";
+import PriceFilterModal from "./PriceFilterModal"; // подключаем модалку
+
 
 const Filter = ({
   perPageChange,
@@ -8,11 +10,14 @@ const Filter = ({
   setSortByCategory,
   sortByCategory,
   flexChanger,
-  flexState
+  flexState,
+  onPriceChange, // новая функция для фильтрации по цене
+
 }) => {
   const [selectedSort, setSelectedSort] = useState(sortByCategory);
-
   const [perPage, setPerPage] = useState(pageState);
+  const [flexDirection, setFlexDirection] = useState(flexState);
+  const [isModalOpen, setIsModalOpen] = useState(false); // состояние для открытия/закрытия модалки
 
   const [flexDirection, setFlexDirection] = useState(flexState);
   // console.log(flexState);
@@ -28,6 +33,14 @@ const Filter = ({
   const handleSelectChange = (e) => {
     setSelectedSort(e.target.value);
   };
+
+  const openModal = () => {
+    setIsModalOpen((prev) => !prev); // если модалка открыта, закрыть; если закрыта, открыть
+  };
+  const closeModal = () => {
+    setIsModalOpen(false); // закрываем модалку
+  };
+
   useEffect(() => {
     setSortByCategory(selectedSort);
   }, [selectedSort]);
@@ -45,19 +58,17 @@ const Filter = ({
       <section className="filter">
         <div className="filter__buttons">
           <div className="filter__buttons-filtering">
-            <a className="filter__buttons-filtering-a" href=""></a>
+            <a className="filter__buttons-filtering-a" onClick={openModal}></a>
             <h1 className="filter__buttons-filtering-h1">Filter</h1>
           </div>
           <div className="filter__buttons-listing">
             <button
               className="filter__buttons-listing-grid"
               onClick={() => handleflexDirection("shop__cards-row")}
-              href=""
             ></button>
             <button
               className="filter__buttons-listing-viewlist"
               onClick={() => handleflexDirection("shop__cards-column")}
-              href=""
             ></button>
           </div>
           <span className="filter__result-text">
@@ -72,7 +83,7 @@ const Filter = ({
             onChange={handlePerPageChanger}
             className="filter__inputs-show-count"
           />
-          <span className="filter__inputs-short">Short by</span>
+          <span className="filter__inputs-short">Sort by</span>
           <select
             className="filter__inputs-select"
             id="options"
@@ -87,6 +98,13 @@ const Filter = ({
           </select>
         </div>
       </section>
+
+      {/* Модальное окно */}
+      <PriceFilterModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onPriceChange={onPriceChange}
+      />
     </FilterStyle>
   );
 };
