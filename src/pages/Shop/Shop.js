@@ -3,6 +3,7 @@ import Filter from "./components/Filter";
 import ShopList from "./components/ShopList";
 import Visit from "./components/Visit";
 import data from "../../data.json";
+import { useLocation } from "react-router-dom";
 
 const shopActionTypes = {
   SET_PER_PAGE: "set_per_page",
@@ -10,7 +11,6 @@ const shopActionTypes = {
   SET_SORT_BY_CATEGORY: "set_sort_by",
   SET_DIRECTION_CHANGER: "set_direction_changer",
   SET_PRICE_FILTER: "set_price_filter", // добавляем действие для фильтра по цене
-
 };
 
 const initialShopState = {
@@ -20,7 +20,6 @@ const initialShopState = {
     flexDirection: "shop__cards-row",
     minPrice: 0, // минимальная цена
     maxPrice: 1000, // максимальная цена
-
   },
   products: [],
   page: 1,
@@ -75,12 +74,19 @@ const shopReducer = (state, action) => {
 
 const Shop = () => {
   const [state, dispatch] = useReducer(shopReducer, initialShopState);
+  const location = useLocation();
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const perPage = searchParams.get("perPage");
+
+    if (perPage) {
+      dispatch({ type: shopActionTypes.SET_PER_PAGE, payload: +perPage });
+    }
+  }, []);
 
   useEffect(() => {
     dispatch({ type: shopActionTypes.SET_PRODUCTS, payload: data.products });
   }, [data]);
-
-
 
   const handlePerPage = (perPageFilter) => {
     dispatch({ type: shopActionTypes.SET_PER_PAGE, payload: perPageFilter });
@@ -108,16 +114,12 @@ const Shop = () => {
         product.price >= state.filter.minPrice &&
         product.price <= state.filter.maxPrice
     );
-
   }, [
     state.products,
     state.filter.sortByCategory,
     state.filter.minPrice,
     state.filter.maxPrice,
   ]);
-
-  
-
 
   const handleDirectionChanger = (selectedChanger) => {
     dispatch({
@@ -137,7 +139,6 @@ const Shop = () => {
         flexChanger={handleDirectionChanger}
         flexState={state.filter.flexDirection}
         onPriceChange={handlePriceChange} // передаем функцию фильтрации по цене
-
       />
       <ShopList
         products={filteredProducts}
