@@ -3,7 +3,6 @@ import { FilterStyle } from "./styles";
 import data from "../../../data.json";
 import PriceFilterModal from "./PriceFilterModal"; // подключаем модалку
 
-
 const Filter = ({
   perPageChange,
   pageState,
@@ -12,12 +11,11 @@ const Filter = ({
   flexChanger,
   flexState,
   onPriceChange, // новая функция для фильтрации по цене
-
 }) => {
   const [selectedSort, setSelectedSort] = useState(sortByCategory);
   const [perPage, setPerPage] = useState(pageState);
   const [flexDirection, setFlexDirection] = useState(flexState);
-  const [isModalOpen, setIsModalOpen] = useState(false); // состояние для открытия/закрытия модалки  
+  const [isModalOpen, setIsModalOpen] = useState(false); // состояние для открытия/закрытия модалки
   // console.log(flexState);
 
   const handlePerPageChanger = (e) => {

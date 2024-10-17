@@ -1,12 +1,17 @@
 import React, { useMemo, useState } from "react";
-import { useCart } from "../../context/CartContext";
+// import { useCart } from "../../context/CartContext";
 import { CartModalStyle } from "./styles/cartModalStyle";
 import getImagePath from "../../utils/getImgPath";
 import Compare from "../Comprassion";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const CartModal = ({ onClose }) => {
-  const { cart, dispatch } = useCart();
+  // const { cart, dispatch } = useCart();
+  const state = useSelector((state) => state.cart);
+  const { products } = state;
+  console.log(state);
+  const dispatch = useDispatch();
 
   const [selectedProducts, setSelectedProducts] = useState([]);
   const navigate = useNavigate();
@@ -32,11 +37,12 @@ const CartModal = ({ onClose }) => {
   };
 
   const totalAmount = useMemo(() => {
-    return cart.reduce((acc, item) => acc + item.price * item.count, 0);
-  }, [cart]);
+    console.log({ products });
+    return products.reduce((acc, item) => acc + item.price * item.count, 0);
+  }, [products]);
 
   const handleCheckout = () => {
-    navigate("/checkout", { state: { cart } });
+    navigate("/checkout", { state: { cart: products } });
     onClose();
   };
 
@@ -49,14 +55,14 @@ const CartModal = ({ onClose }) => {
             Close
           </button>
         </header>
-        {cart.length === 0 ? (
+        {products.length === 0 ? (
           <div>
             <p>No items in cart</p>
             <p>Continue shopping to add items to your cart!</p>
           </div>
         ) : (
           <ul className="cartModal__products">
-            {cart.map((item) => (
+            {products.map((item) => (
               <li key={item.id} className="cartModal__product">
                 <img
                   src={getImagePath(item.img)}

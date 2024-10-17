@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CardStyle } from "./styles";
 import share from "../../assets/icons/gridicons_share.svg";
 import compare from "../../assets/icons/compare-svgrepo-com 1.svg";
@@ -6,22 +6,28 @@ import heart from "../../assets/icons/heart.svg";
 import { useCart } from "../../context/CartContext";
 import getImagePath from "../../utils/getImgPath";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../../store/cartSlice";
 
 const Card = ({ product }) => {
-  const { dispatch } = useCart();
+  const dispatch = useDispatch();
+  
+  
+  // const { dispatch } = useCart();
   const [isAdded, setIsAdded] = useState(false);
   const navigate = useNavigate();
 
   const handleAddToCart = () => {
     try {
-      dispatch({ type: "ADD_TO_CART", product });
+      // dispatch({ type: "ADD_TO_CART", product });
+    dispatch(addToCart( product ));
+      
       setIsAdded(true);
       setTimeout(() => setIsAdded(false), 2000);
     } catch (error) {
       console.error("Error adding to cart:", error);
     }
   };
-  // console.log(product.price)
 
   const handleCardSelect = (e) => {
     try {

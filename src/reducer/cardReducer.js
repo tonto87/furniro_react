@@ -36,6 +36,6 @@ export const cartReducer = (state, action) => {
 };
 
 export const initializeCart = () => {
-    const storedCart = localStorage.getItem("cart");
-    return storedCart ? JSON.parse(storedCart) : [];
-  }
+  const storedCart = localStorage.getItem("cart");
+  return storedCart ? JSON.parse(storedCart) : [];
+};

@@ -5,12 +5,12 @@ import OurProducts from "./components/OurProducts";
 import Inspirations from "./components/Inspirations";
 import Funiro from "./components/Funiro";
 
-const Home = ({ setCartCount }) => {
+const Home = () => {
   return (
     <>
       <Discovery />
       <Browsetherange />
-      <OurProducts setCartCount={setCartCount} />
+      <OurProducts />
       <Inspirations />
       <Funiro />
     </>

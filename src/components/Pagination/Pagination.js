@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useEffect } from "react";
 
 
 const Pagination = ({ items, perPage, setPageNumber, activePage }) => {
