@@ -1,31 +1,27 @@
 import React, { useMemo, useState } from "react";
-// import { useCart } from "../../context/CartContext";
 import { CartModalStyle } from "./styles/cartModalStyle";
 import getImagePath from "../../utils/getImgPath";
 import Compare from "../Comprassion";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { addToCart, clearCart, decrementCount, removeFromCart } from "../../store/cartSlice";
 
 const CartModal = ({ onClose }) => {
-  // const { cart, dispatch } = useCart();
-  const state = useSelector((state) => state.cart);
-  const { products } = state;
-  console.log(state);
+  const { products } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
   const [selectedProducts, setSelectedProducts] = useState([]);
   const navigate = useNavigate();
 
   const handleRemove = (id) => {
-    dispatch({ type: "REMOVE_FROM_CART", id });
+    dispatch(removeFromCart({ id }));
   };
 
   const handleIncrement = (id) => {
-    dispatch({ type: "ADD_TO_CART", product: { id } });
+    dispatch(addToCart({ id }));
   };
 
   const handleDecrement = (id) => {
-    dispatch({ type: "DECREMENT_COUNT", id });
+    dispatch(decrementCount({ id }));
   };
 
   const handleSelectProduct = (product) => {
@@ -37,7 +33,6 @@ const CartModal = ({ onClose }) => {
   };
 
   const totalAmount = useMemo(() => {
-    console.log({ products });
     return products.reduce((acc, item) => acc + item.price * item.count, 0);
   }, [products]);
 
@@ -45,6 +40,9 @@ const CartModal = ({ onClose }) => {
     navigate("/checkout", { state: { cart: products } });
     onClose();
   };
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  }
 
   return (
     <CartModalStyle onClick={onClose}>
@@ -124,6 +122,12 @@ const CartModal = ({ onClose }) => {
               onClick={handleCheckout}
             >
               Checkout
+            </button>
+            <button
+              className="cartModal__footer-buttons-checkout"
+              onClick={handleClearCart}
+            >
+              Clear Cart
             </button>
           </div>
           <Compare
