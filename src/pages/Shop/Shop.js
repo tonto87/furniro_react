@@ -4,67 +4,24 @@ import ShopList from "./components/ShopList";
 import Visit from "./components/Visit";
 import data from "../../data.json";
 import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setPerPage, setSortByCategory, setDirection, setPriceFilter } from "../../store/filterSlice";
 
 const shopActionTypes = {
-  SET_PER_PAGE: "set_per_page",
-  SET_PRODUCTS: "set_products",
-  SET_SORT_BY_CATEGORY: "set_sort_by",
-  SET_DIRECTION_CHANGER: "set_direction_changer",
-  SET_PRICE_FILTER: "set_price_filter", // добавляем действие для фильтра по цене
+  SET_PRODUCTS: "set_products"
 };
 
 const initialShopState = {
-  filter: {
-    perPage: 4,
-    sortByCategory: "",
-    flexDirection: "shop__cards-row",
-    minPrice: 0, // минимальная цена
-    maxPrice: 1000, // максимальная цена
-  },
   products: [],
   page: 1,
 };
 
 const shopReducer = (state, action) => {
   switch (action.type) {
-    case shopActionTypes.SET_PER_PAGE:
-      return {
-        ...state,
-        filter: {
-          ...state.filter,
-          perPage: action.payload,
-        },
-      };
     case shopActionTypes.SET_PRODUCTS:
       return {
         ...state,
         products: [...action.payload],
-      };
-    case shopActionTypes.SET_SORT_BY_CATEGORY:
-      return {
-        ...state,
-        filter: {
-          ...state.filter,
-          sortByCategory: action.payload,
-        },
-      };
-
-    case shopActionTypes.SET_DIRECTION_CHANGER:
-      return {
-        ...state,
-        filter: {
-          ...state.filter,
-          flexDirection: action.payload,
-        },
-      };
-    case shopActionTypes.SET_PRICE_FILTER:
-      return {
-        ...state,
-        filter: {
-          ...state.filter,
-          minPrice: action.payload.minPrice,
-          maxPrice: action.payload.maxPrice,
-        },
       };
 
     default:
@@ -73,6 +30,8 @@ const shopReducer = (state, action) => {
 };
 
 const Shop = () => {
+  const filterDispatch = useDispatch();
+  const filters = useSelector((state) => state.filters)
   const [state, dispatch] = useReducer(shopReducer, initialShopState);
   const location = useLocation();
   useEffect(() => {
@@ -80,7 +39,7 @@ const Shop = () => {
     const perPage = searchParams.get("perPage");
 
     if (perPage) {
-      dispatch({ type: shopActionTypes.SET_PER_PAGE, payload: +perPage });
+      filterDispatch(setPerPage(+perPage));
     }
   }, []);
 
@@ -89,43 +48,34 @@ const Shop = () => {
   }, [data]);
 
   const handlePerPage = (perPageFilter) => {
-    dispatch({ type: shopActionTypes.SET_PER_PAGE, payload: perPageFilter });
+    filterDispatch(setPerPage(perPageFilter));
   };
 
   const handleSortCategory = (selectedSort) => {
-    dispatch({
-      type: shopActionTypes.SET_SORT_BY_CATEGORY,
-      payload: selectedSort,
-    });
+    filterDispatch(setSortByCategory(selectedSort));
   };
 
   const handlePriceChange = (minPrice, maxPrice) => {
-    dispatch({
-      type: shopActionTypes.SET_PRICE_FILTER,
-      payload: { minPrice, maxPrice },
-    });
+    filterDispatch(setPriceFilter({ minPrice, maxPrice }));
   };
 
   const filteredProducts = useMemo(() => {
     return state.products.filter(
       (product) =>
-        (state.filter.sortByCategory === "" ||
-          product.category === state.filter.sortByCategory) &&
-        product.price >= state.filter.minPrice &&
-        product.price <= state.filter.maxPrice
+        (filters.sortByCategory === "" ||
+        product.category === filters.sortByCategory) &&
+        product.price >= filters.minPrice &&
+        product.price <= filters.maxPrice
     );
   }, [
     state.products,
-    state.filter.sortByCategory,
-    state.filter.minPrice,
-    state.filter.maxPrice,
+    filters.sortByCategory,
+    filters.minPrice,
+    filters.maxPrice,
   ]);
 
   const handleDirectionChanger = (selectedChanger) => {
-    dispatch({
-      type: shopActionTypes.SET_DIRECTION_CHANGER,
-      payload: selectedChanger,
-    });
+    filterDispatch(setDirection(selectedChanger));
   };
 
   return (
@@ -133,18 +83,18 @@ const Shop = () => {
       <Visit />
       <Filter
         perPageChange={handlePerPage}
-        pageState={state.filter.perPage}
+        pageState={filters.perPage}
         setSortByCategory={handleSortCategory}
-        sortByCategory={state.filter.sortByCategory}
+        sortByCategory={filters.sortByCategory}
         flexChanger={handleDirectionChanger}
-        flexState={state.filter.flexDirection}
-        onPriceChange={handlePriceChange} // передаем функцию фильтрации по цене
+        flexState={filters.flexDirection}
+        onPriceChange={handlePriceChange}
       />
       <ShopList
         products={filteredProducts}
-        pageState={state.filter.perPage}
+        pageState={filters.perPage}
         activePage={state.page}
-        flexState={state.filter.flexDirection}
+        flexState={filters.flexDirection}
       />
     </>
   );

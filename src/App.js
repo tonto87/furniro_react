@@ -6,19 +6,16 @@ import Shop from "./pages/Shop";
 import Contact from "./pages/Contact";
 import Checkout from "./pages/Checkout";
 import Product from "./pages/Product";
-
 import LoginSignup from "./pages/LoginSignup/LoginSignup";
 import Footer from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound";
-import { CartProvider } from "./context/CartContext";
 import { GlobalStyle } from "./styles/global";
 import { Provider } from "react-redux";
 import store from "./store";
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <CartProvider>
+    <Provider store={store}>      
         <Router>
           <GlobalStyle>
             <Header />
@@ -34,7 +31,6 @@ const App = () => {
             <Footer />
           </GlobalStyle>
         </Router>
-      </CartProvider>
     </Provider>
   );
 };

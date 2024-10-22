@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { variables } from "../../../styles/variables";
 import filtering from "../../../assets/icons/filtering.svg";
 import gridFiltering from "../../../assets/icons/grid-filtering.svg";
@@ -69,66 +69,6 @@ export const VisitStyle = styled.div`
     }
   }
 `;
-export const ModalStyle = styled.div`
-  .modal {
-    font-family: ${variables.fonts.montserrat};
-    background-color: ${variables.white};
-    padding: 24px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    max-width: 100%;
-    margin: auto;
-    position: relative;
-
-    &__header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 16px;
-      border-bottom: 1px solid ${variables.fontLight};
-
-      &-title {
-        color: ${variables.black};
-        font-size: 24px;
-        font-weight: 500;
-      }
-
-      &-close {
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-      }
-    }
-
-    &__content {
-      padding: 20px 0;
-      font-size: 16px;
-      color: ${variables.fontLight};
-    }
-
-    &__footer {
-      display: flex;
-      justify-content: flex-end;
-      gap: 12px;
-
-      &-button {
-        padding: 10px 20px;
-        border-radius: 5px;
-        background-color: ${variables.primary};
-        color: ${variables.white};
-        border: none;
-        cursor: pointer;
-
-        &--cancel {
-          background-color: ${variables.grey1};
-        }
-      }
-    }
-  }
-`;
-
 export const FilterStyle = styled.div`
   .filter {
     background: ${variables.cream};
@@ -252,8 +192,7 @@ export const FilterStyle = styled.div`
     }
   }
 
-  input[type="number"] {
-    appearance: textfield;
+  input[type="number"] {    
     color: ${variables.fontLight};
     font-size: 20px;
     font-style: normal;
@@ -263,7 +202,6 @@ export const FilterStyle = styled.div`
     border: none;
   }
 `;
-
 export const OurShopStyle = styled.div`
 
   .shop {
@@ -346,3 +284,51 @@ export const OurShopStyle = styled.div`
     }
   }
 `;
+export const PriceModalBackdrop = styled.div`
+  position: fixed;
+  width: 100%;
+  background: ${variables.black};
+  opacity: 0.5;
+  z-index: 2;
+  height: 100vh;
+  top: 0;
+}
+`;
+export const PriceModal = styled.div`
+  position: relative
+`;
+export const PriceModalContainer = styled.div`
+    font-family: ${variables.fonts.montserrat};
+    background-color: ${variables.white};
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: black 4px 4px 10px;
+    width: 400px;    
+    margin: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column; 
+    z-index: 3;
+    left: calc(50% - 200px);    
+    
+
+`;
+export const PriceModalFooter = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+`;
+export const PriceModalButton = styled.button`
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: ${variables.greenAccents};
+  color: ${variables.black};
+  border: none;
+  cursor: pointer;
+
+  ${props => props.type === "danger" && css`
+      background-color: ${variables.redAccents};
+
+    `}
+`

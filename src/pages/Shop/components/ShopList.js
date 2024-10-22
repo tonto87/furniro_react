@@ -15,9 +15,7 @@ const ShopList = ({ products, pageState, activePage,flexState }) => {
   };
 
   useEffect(() => {
-
     handlePageNumber(activePage);
-
   }, [pageState, products]);
 
   return (

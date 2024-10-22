@@ -1,15 +1,15 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { ProductStyle } from "./styles";
 import getImagePath from "../../utils/getImgPath";
-import { useCart } from "../../context/CartContext";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/cartSlice";
 
 const Product = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const product = location.state?.product;
 
-  const { dispatch } = useCart();
+  const { dispatch } = useDispatch();
 
   if (!product) {
     return <p>Product not found.</p>;
@@ -17,7 +17,7 @@ const Product = () => {
 
   const handleAddToCart = () => {
     try {
-      dispatch({ type: "ADD_TO_CART", product });
+      dispatch(addToCart(product));
     } catch (error) {
       console.error("Error adding to cart:", error);
     }
