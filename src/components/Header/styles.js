@@ -16,7 +16,7 @@ export const Navbar = styled.nav`
     color: ${variables.black};
     font-size: 28px;
     font-weight: 600;
-    text-transform: uppercase;
+    // text-transform: uppercase;
 
     img {
       width: 40px;

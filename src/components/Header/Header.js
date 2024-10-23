@@ -26,7 +26,7 @@ const Header = () => {
       <Navbar>
         <NavLink to="/" className="logo">
           <img src={logoImg} alt="Logo" />
-          Funiro
+          Furniro
         </NavLink>
 
         <div className="nav-links">
