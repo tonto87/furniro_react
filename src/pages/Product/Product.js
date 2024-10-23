@@ -8,7 +8,6 @@ import { addToCart } from "../../store/cartSlice";
 const Product = () => {
   const location = useLocation();
   const product = location.state?.product;
-
   const dispatch  = useDispatch();
 
   if (!product) {
