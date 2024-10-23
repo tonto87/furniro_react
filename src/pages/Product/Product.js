@@ -9,7 +9,7 @@ const Product = () => {
   const location = useLocation();
   const product = location.state?.product;
 
-  const { dispatch } = useDispatch();
+  const  dispatch  = useDispatch();
 
   if (!product) {
     return <p>Product not found.</p>;
