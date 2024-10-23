@@ -3,6 +3,7 @@ import Fbx from "./components/Fbx";
 import { AboutStyle } from "./styles";
 
 
+
 const About = () => {
 
 
@@ -10,7 +11,7 @@ const About = () => {
     <AboutStyle>
       <Fbx></Fbx>
       
-    </AboutStyle>
+    </AboutStyle> 
   );
 };
 

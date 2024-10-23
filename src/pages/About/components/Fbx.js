@@ -1,6 +1,7 @@
 import React from "react";
 import { FbxStyle } from "./styles";
 
+
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
