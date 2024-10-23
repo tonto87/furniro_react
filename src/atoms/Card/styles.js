@@ -7,7 +7,6 @@ export const CardStyle = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
-
     &__header {
       display:flex;
       position: relative;

@@ -8,8 +8,7 @@ import { addToCart } from "../../store/cartSlice";
 const Product = () => {
   const location = useLocation();
   const product = location.state?.product;
-
-  const  dispatch  = useDispatch();
+  const dispatch  = useDispatch();
 
   if (!product) {
     return <p>Product not found.</p>;
@@ -18,6 +17,7 @@ const Product = () => {
   const handleAddToCart = () => {
     try {
       dispatch(addToCart(product));
+
     } catch (error) {
       console.error("Error adding to cart:", error);
     }

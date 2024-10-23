@@ -23,7 +23,6 @@ const shopReducer = (state, action) => {
         ...state,
         products: [...action.payload],
       };
-
     default:
       break;
   }
@@ -58,6 +57,8 @@ const Shop = () => {
   const handlePriceChange = (minPrice, maxPrice) => {
     filterDispatch(setPriceFilter({ minPrice, maxPrice }));
   };
+
+  
 
   const filteredProducts = useMemo(() => {
     return state.products.filter(

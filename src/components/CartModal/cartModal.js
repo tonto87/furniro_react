@@ -4,7 +4,12 @@ import getImagePath from "../../utils/getImgPath";
 import Compare from "../Comprassion";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, clearCart, decrementCount, removeFromCart } from "../../store/cartSlice";
+import {
+  addToCart,
+  clearCart,
+  decrementCount,
+  removeFromCart,
+} from "../../store/cartSlice";
 
 const CartModal = ({ onClose }) => {
   const { products } = useSelector((state) => state.cart);
@@ -42,7 +47,7 @@ const CartModal = ({ onClose }) => {
   };
   const handleClearCart = () => {
     dispatch(clearCart());
-  }
+  };
 
   return (
     <CartModalStyle onClick={onClose}>

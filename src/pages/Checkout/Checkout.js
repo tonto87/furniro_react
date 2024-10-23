@@ -21,7 +21,6 @@ const Checkout = () => {
     email: "",
   });
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -32,7 +31,6 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setFormData({
       firstName: "",
       lastName: "",
