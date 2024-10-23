@@ -5,14 +5,13 @@ import acc from "../../assets/icons/acc.svg";
 import heart from "../../assets/icons/heart.svg";
 import shoppingCart from "../../assets/icons/shoppingCart.svg";
 import search from "../../assets/icons/search.svg";
-
 import { Navbar } from "./styles";
-import { useCart } from "../../context/CartContext";
 import CartModal from "../CartModal";
+import { useSelector } from "react-redux";
 
-const Header = () => {
-  const { cart } = useCart();
+const Header = () => {  
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const {products } = useSelector((state) => state.cart);
 
   const handleOpenCart = () => {
     setIsModalOpen(true);
@@ -27,7 +26,7 @@ const Header = () => {
       <Navbar>
         <NavLink to="/" className="logo">
           <img src={logoImg} alt="Logo" />
-          Funiro
+          Furniro
         </NavLink>
 
         <div className="nav-links">
@@ -49,8 +48,8 @@ const Header = () => {
 
           <div onClick={handleOpenCart} style={{ cursor: "pointer" }}>
             <img src={shoppingCart} alt="Cart" />
-            {cart.length > 0 && (
-              <span className="cart-count">{cart.length}</span>
+            {products.length > 0 && (
+              <span className="cart-count">{products.length}</span>
             )}
           </div>
         </div>

@@ -12,7 +12,7 @@ export default function Header() {
     <Navbar>
       <NavLink to="/" className="logo">
         <img src={logoimg} alt="Logo" />
-        Funiro
+        Furniro
       </NavLink>
 
       <div className="nav-links">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FilterStyle } from "./styles";
 import data from "../../../data.json";
-import PriceFilterModal from "./PriceFilterModal"; // подключаем модалку
+import PriceFilterModal from "./PriceFilterModal";
 
 const Filter = ({
   perPageChange,
@@ -10,15 +10,20 @@ const Filter = ({
   sortByCategory,
   flexChanger,
   flexState,
-  onPriceChange, // новая функция для фильтрации по цене
+  onPriceChange,
 }) => {
   const [selectedSort, setSelectedSort] = useState(sortByCategory);
   const [perPage, setPerPage] = useState(pageState);
   const [flexDirection, setFlexDirection] = useState(flexState);
-  const [isModalOpen, setIsModalOpen] = useState(false); // состояние для открытия/закрытия модалки
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   const handlePerPageChanger = (e) => {
+    if (e.target.value < 1) {
+      setPerPage("1");
+    }else{
     setPerPage(e.target.value);
+    }
   };
 
   const handleflexDirection = (e) => {
@@ -30,10 +35,10 @@ const Filter = ({
   };
 
   const openModal = () => {
-    setIsModalOpen((prev) => !prev); // если модалка открыта, закрыть; если закрыта, открыть
+    setIsModalOpen((prev) => !prev);
   };
   const closeModal = () => {
-    setIsModalOpen(false); // закрываем модалку
+    setIsModalOpen(false);
   };
 
   useEffect(() => {

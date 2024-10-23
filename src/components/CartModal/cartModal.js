@@ -1,26 +1,34 @@
 import React, { useMemo, useState } from "react";
-import { useCart } from "../../context/CartContext";
 import { CartModalStyle } from "./styles/cartModalStyle";
 import getImagePath from "../../utils/getImgPath";
 import Compare from "../Comprassion";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 
 const CartModal = ({ onClose }) => {
   const { cart, dispatch } = useCart();
 
+=======
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, clearCart, decrementCount, removeFromCart } from "../../store/cartSlice";
+
+const CartModal = ({ onClose }) => {
+  const { products } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+>>>>>>> 4f1685358d2f9e44a6a9ba877249138e202458d4
   const [selectedProducts, setSelectedProducts] = useState([]);
   const navigate = useNavigate();
 
   const handleRemove = (id) => {
-    dispatch({ type: "REMOVE_FROM_CART", id });
+    dispatch(removeFromCart({ id }));
   };
 
   const handleIncrement = (id) => {
-    dispatch({ type: "ADD_TO_CART", product: { id } });
+    dispatch(addToCart({ id }));
   };
 
   const handleDecrement = (id) => {
-    dispatch({ type: "DECREMENT_COUNT", id });
+    dispatch(decrementCount({ id }));
   };
 
   const handleSelectProduct = (product) => {
@@ -32,8 +40,16 @@ const CartModal = ({ onClose }) => {
   };
 
   const totalAmount = useMemo(() => {
-    return cart.reduce((acc, item) => acc + item.price * item.count, 0);
-  }, [cart]);
+    return products.reduce((acc, item) => acc + item.price * item.count, 0);
+  }, [products]);
+
+  const handleCheckout = () => {
+    navigate("/checkout", { state: { cart: products } });
+    onClose();
+  };
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  }
 
   const handleCheckout = () => {
     navigate("/checkout", { state: { cart } });
@@ -49,14 +65,14 @@ const CartModal = ({ onClose }) => {
             Close
           </button>
         </header>
-        {cart.length === 0 ? (
+        {products.length === 0 ? (
           <div>
             <p>No items in cart</p>
             <p>Continue shopping to add items to your cart!</p>
           </div>
         ) : (
           <ul className="cartModal__products">
-            {cart.map((item) => (
+            {products.map((item) => (
               <li key={item.id} className="cartModal__product">
                 <img
                   src={getImagePath(item.img)}
@@ -118,6 +134,12 @@ const CartModal = ({ onClose }) => {
               onClick={handleCheckout}
             >
               Checkout
+            </button>
+            <button
+              className="cartModal__footer-buttons-checkout"
+              onClick={handleClearCart}
+            >
+              Clear Cart
             </button>
           </div>
           <Compare

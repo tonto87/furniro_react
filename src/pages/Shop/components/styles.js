@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { variables } from "../../../styles/variables";
 import filtering from "../../../assets/icons/filtering.svg";
 import gridFiltering from "../../../assets/icons/grid-filtering.svg";
@@ -69,6 +69,7 @@ export const VisitStyle = styled.div`
     }
   }
 `;
+<<<<<<< HEAD
 export const ModalStyle = styled.div`
   .modal {
     font-family: ${variables.fonts.montserrat};
@@ -129,6 +130,8 @@ export const ModalStyle = styled.div`
   }
 `;
 
+=======
+>>>>>>> 4f1685358d2f9e44a6a9ba877249138e202458d4
 export const FilterStyle = styled.div`
   .filter {
     background: ${variables.cream};
@@ -252,8 +255,7 @@ export const FilterStyle = styled.div`
     }
   }
 
-  input[type="number"] {
-    appearance: textfield;
+  input[type="number"] {    
     color: ${variables.fontLight};
     font-size: 20px;
     font-style: normal;
@@ -263,8 +265,8 @@ export const FilterStyle = styled.div`
     border: none;
   }
 `;
-
 export const OurShopStyle = styled.div`
+
   .shop {
     padding: 56px 102px;
 
@@ -314,11 +316,31 @@ export const OurShopStyle = styled.div`
     &__cards-row {
       margin-top: 32px;
       display: flex;
+<<<<<<< HEAD
       justify-content: space-between;
+=======
+      justify-content:space-between;
+>>>>>>> 4f1685358d2f9e44a6a9ba877249138e202458d4
       align-items: center;
       gap: 30px;
       flex-wrap: wrap;
       flex-direction: row;
+<<<<<<< HEAD
+=======
+      
+    }
+    &__cards-column {
+
+      margin-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      justify-content:center;
+
+      gap: 30px;
+      flex-wrap: wrap;
+      flex-direction: row;
+>>>>>>> 4f1685358d2f9e44a6a9ba877249138e202458d4
     }
     &__cards-column {
       margin-top: 32px;
@@ -332,3 +354,51 @@ export const OurShopStyle = styled.div`
     }
   }
 `;
+export const PriceModalBackdrop = styled.div`
+  position: fixed;
+  width: 100%;
+  background: ${variables.black};
+  opacity: 0.5;
+  z-index: 2;
+  height: 100vh;
+  top: 0;
+}
+`;
+export const PriceModal = styled.div`
+  position: relative
+`;
+export const PriceModalContainer = styled.div`
+    font-family: ${variables.fonts.montserrat};
+    background-color: ${variables.white};
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: black 4px 4px 10px;
+    width: 400px;    
+    margin: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column; 
+    z-index: 3;
+    left: calc(50% - 200px);    
+    
+
+`;
+export const PriceModalFooter = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+`;
+export const PriceModalButton = styled.button`
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: ${variables.greenAccents};
+  color: ${variables.black};
+  border: none;
+  cursor: pointer;
+
+  ${props => props.type === "danger" && css`
+      background-color: ${variables.redAccents};
+
+    `}
+`

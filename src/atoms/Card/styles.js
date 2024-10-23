@@ -11,7 +11,10 @@ export const CardStyle = styled.div`
       display:flex;
       position: relative;
     }
-    &__img {
+
+
+    &__img{
+
       width: 100%;
     }
 
