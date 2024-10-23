@@ -1,17 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-import { useLocation, useNavigate } from "react-router-dom";
-import { ProductStyle } from "./styles";
-import getImagePath from "../../utils/getImgPath";
-import { useCart } from "../../context/CartContext";
-
-const Product = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const product = location.state?.product;
-
-  const { dispatch } = useCart();
-=======
 import { useLocation } from "react-router-dom";
 import { ProductStyle } from "./styles";
 import getImagePath from "../../utils/getImgPath";
@@ -22,8 +9,7 @@ const Product = () => {
   const location = useLocation();
   const product = location.state?.product;
 
-  const { dispatch } = useDispatch();
->>>>>>> 4f1685358d2f9e44a6a9ba877249138e202458d4
+  const dispatch  = useDispatch();
 
   if (!product) {
     return <p>Product not found.</p>;
@@ -31,11 +17,8 @@ const Product = () => {
 
   const handleAddToCart = () => {
     try {
-<<<<<<< HEAD
-      dispatch({ type: "ADD_TO_CART", product });
-=======
       dispatch(addToCart(product));
->>>>>>> 4f1685358d2f9e44a6a9ba877249138e202458d4
+
     } catch (error) {
       console.error("Error adding to cart:", error);
     }

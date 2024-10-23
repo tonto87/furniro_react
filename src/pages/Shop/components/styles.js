@@ -69,69 +69,6 @@ export const VisitStyle = styled.div`
     }
   }
 `;
-<<<<<<< HEAD
-export const ModalStyle = styled.div`
-  .modal {
-    font-family: ${variables.fonts.montserrat};
-    background-color: ${variables.white};
-    padding: 24px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    max-width: 100%;
-    margin: auto;
-    position: relative;
-
-    &__header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 16px;
-      border-bottom: 1px solid ${variables.fontLight};
-
-      &-title {
-        color: ${variables.black};
-        font-size: 24px;
-        font-weight: 500;
-      }
-
-      &-close {
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-      }
-    }
-
-    &__content {
-      padding: 20px 0;
-      font-size: 16px;
-      color: ${variables.fontLight};
-    }
-
-    &__footer {
-      display: flex;
-      justify-content: flex-end;
-      gap: 12px;
-
-      &-button {
-        padding: 10px 20px;
-        border-radius: 5px;
-        background-color: ${variables.primary};
-        color: ${variables.white};
-        border: none;
-        cursor: pointer;
-
-        &--cancel {
-          background-color: ${variables.grey1};
-        }
-      }
-    }
-  }
-`;
-
-=======
->>>>>>> 4f1685358d2f9e44a6a9ba877249138e202458d4
 export const FilterStyle = styled.div`
   .filter {
     background: ${variables.cream};
@@ -316,17 +253,11 @@ export const OurShopStyle = styled.div`
     &__cards-row {
       margin-top: 32px;
       display: flex;
-<<<<<<< HEAD
-      justify-content: space-between;
-=======
       justify-content:space-between;
->>>>>>> 4f1685358d2f9e44a6a9ba877249138e202458d4
       align-items: center;
       gap: 30px;
       flex-wrap: wrap;
       flex-direction: row;
-<<<<<<< HEAD
-=======
       
     }
     &__cards-column {
@@ -340,7 +271,6 @@ export const OurShopStyle = styled.div`
       gap: 30px;
       flex-wrap: wrap;
       flex-direction: row;
->>>>>>> 4f1685358d2f9e44a6a9ba877249138e202458d4
     }
     &__cards-column {
       margin-top: 32px;

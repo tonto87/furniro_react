@@ -3,19 +3,17 @@ import { CartModalStyle } from "./styles/cartModalStyle";
 import getImagePath from "../../utils/getImgPath";
 import Compare from "../Comprassion";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-
-const CartModal = ({ onClose }) => {
-  const { cart, dispatch } = useCart();
-
-=======
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, clearCart, decrementCount, removeFromCart } from "../../store/cartSlice";
+import {
+  addToCart,
+  clearCart,
+  decrementCount,
+  removeFromCart,
+} from "../../store/cartSlice";
 
 const CartModal = ({ onClose }) => {
   const { products } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
->>>>>>> 4f1685358d2f9e44a6a9ba877249138e202458d4
   const [selectedProducts, setSelectedProducts] = useState([]);
   const navigate = useNavigate();
 
@@ -49,11 +47,6 @@ const CartModal = ({ onClose }) => {
   };
   const handleClearCart = () => {
     dispatch(clearCart());
-  }
-
-  const handleCheckout = () => {
-    navigate("/checkout", { state: { cart } });
-    onClose();
   };
 
   return (
