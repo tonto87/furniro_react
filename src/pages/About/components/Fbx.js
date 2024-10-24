@@ -8,13 +8,13 @@ import { useGLTF } from "@react-three/drei";
 import get3dModelsPath from "../../../utils/get3dModelsPath";
 
 
-const FBXModel = () => {
+const FBXModel = ({position,rotation}) => {
   const fbx = useLoader(FBXLoader, get3dModelsPath("rubik.fbx"));
   if (!fbx) {
     console.error("FBX file could not be loaded");
     return null;
   }
-  return <primitive object={fbx} />;
+  return <primitive object={fbx} rotation={rotation} position={position}/>;
 };
 
 const Model = () => {
@@ -23,7 +23,7 @@ const Model = () => {
 };
 
 const Fbx = () => {
-  const rotation = [Math.PI / 6, 0, 0];
+  const rotation = [Math.PI / 5, 0, 0];
 
   return (
     <FbxStyle>
