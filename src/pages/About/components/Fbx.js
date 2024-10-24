@@ -1,13 +1,12 @@
 import React from "react";
 import { FbxStyle } from "./styles";
-
-
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import { useGLTF } from "@react-three/drei";
 import get3dModelsPath from "../../../utils/get3dModelsPath";
+
 
 const FBXModel = () => {
   const fbx = useLoader(FBXLoader, get3dModelsPath("rubik.fbx"));
@@ -24,12 +23,14 @@ const Model = () => {
 };
 
 const Fbx = () => {
+  const rotation = [Math.PI / 6, 0, 0];
+
   return (
     <FbxStyle>
-      <Canvas>
+      <Canvas camera={{ position: [0, 5, 15], fov: 55 }} >
         <ambientLight intensity={0.5} />
         <directionalLight position={[0, 10, 5]} intensity={1} />
-        <FBXModel />
+        <FBXModel position={[0, 0, 0]} rotation={rotation} />
         <OrbitControls />
         {/* <ambientLight />
         <Model /> */}
