@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CardStyle } from "./styles";
 import share from "../../assets/icons/gridicons_share.svg";
 import compare from "../../assets/icons/compare-svgrepo-com 1.svg";

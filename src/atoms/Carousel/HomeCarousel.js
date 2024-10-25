@@ -12,6 +12,7 @@ const images = [
   // getImagePath("image7.png"),
   // getImagePath("image8.png"),
   // getImagePath("image9.png"),
+  
 ];
 
 const HomeCarousel = () => {

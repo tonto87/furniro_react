@@ -92,7 +92,7 @@ const LoginSignup = () => {
         </div>
         {signIn && <LoginPage onClick={handleLogin} />}
         {signIn === false && <RegisterPage onClick={handleRegister} />}
-        {/* <ProfilPage onClick={handleProfile} loggeduser={loggeduser} /> */}
+        <ProfilPage onClick={handleProfile} loggeduser={loggeduser} />
       </div>
     </LoginSignupStyle>
   );

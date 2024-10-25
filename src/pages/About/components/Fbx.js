@@ -17,10 +17,10 @@ const FBXModel = ({position,rotation}) => {
   return <primitive object={fbx} rotation={rotation} position={position}/>;
 };
 
-const Model = () => {
-  const { scene } = useGLTF(get3dModelsPath("pathfinder.glb"));
-  return <primitive object={scene} />;
-};
+// const Model = () => {
+//   const { scene } = useGLTF(get3dModelsPath("pathfinder.glb"));
+//   return <primitive object={scene} />;
+// };
 
 const Fbx = () => {
   const rotation = [Math.PI / 5, 0, 0];

@@ -1,9 +1,9 @@
 import React from "react";
 import { InspirationsStyle } from "./styles";
-import inspirationbedroom from "../../..//assets/images/inspirationbedroom.png";
-import vector1 from "../../..//assets/icons/vector1.svg";
-import inspirationdiningroom from "../../..//assets/images/inspirationdiningroom.png";
-import inspirationcrop from "../../..//assets/images/inspirationcrop.png";
+// import inspirationbedroom from "../../..//assets/images/inspirationbedroom.png";
+// import vector1 from "../../..//assets/icons/vector1.svg";
+// import inspirationdiningroom from "../../..//assets/images/inspirationdiningroom.png";
+// import inspirationcrop from "../../..//assets/images/inspirationcrop.png";
 import { useNavigate } from "react-router-dom";
 import HomeCarousel from "../../../atoms/Carousel/HomeCarousel";
 
