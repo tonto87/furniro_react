@@ -1,82 +1,73 @@
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
-import Stats from 'three/examples/jsm/libs/stats.module'
+import React, { useState, useEffect } from 'react';
+import { HomeCarouselStyle } from "./styles";
+import getImagePath from "../../utils/getImgPath";
 
-const scene = new THREE.Scene()
-scene.add(new THREE.AxesHelper(5))
+const images = [
+  getImagePath("image1.png"),
+  getImagePath("image2.png"),
+  getImagePath("image3.png"),
+  getImagePath("image4.png"),
+  getImagePath("image5.png"),
+  getImagePath("image6.png"),
+  getImagePath("image7.png"),
+  getImagePath("image8.png"),
+  getImagePath("image9.png"),
+];
 
-const light = new THREE.PointLight(0xffffff, 50)
-light.position.set(0.8, 1.4, 1.0)
-scene.add(light)
+const HomeCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalImages = images.length;
 
-const ambientLight = new THREE.AmbientLight()
-scene.add(ambientLight)
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
+  };
 
-const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-)
-camera.position.set(0.8, 1.4, 1.0)
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalImages) % totalImages);
+  };
 
-const renderer = new THREE.WebGLRenderer()
-renderer.setSize(window.innerWidth, window.innerHeight)
-document.body.appendChild(renderer.domElement)
+  const goToPage = (index) => {
+    setCurrentIndex(index);
+  };
 
-const controls = new OrbitControls(camera, renderer.domElement)
-controls.enableDamping = true
-controls.target.set(0, 1, 0)
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
-//const material = new THREE.MeshNormalMaterial()
 
-const fbxLoader = new FBXLoader()
-fbxLoader.load(
-    'models/Kachujin G Rosales.fbx',
-    (object) => {
-        // object.traverse(function (child) {
-        //     if ((child as THREE.Mesh).isMesh) {
-        //         // (child as THREE.Mesh).material = material
-        //         if ((child as THREE.Mesh).material) {
-        //             ((child as THREE.Mesh).material as THREE.MeshBasicMaterial).transparent = false
-        //         }
-        //     }
-        // })
-        // object.scale.set(.01, .01, .01)
-        scene.add(object)
-    },
-    (xhr) => {
-        console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
-    },
-    (error) => {
-        console.log(error)
-    }
-)
+  const displayedImages = [
+    images[(currentIndex - 1 + totalImages) % totalImages], // Left inactive
+    images[currentIndex], // Active
+    images[(currentIndex + 1) % totalImages], // Right inactive
+  ];
 
-window.addEventListener('resize', onWindowResize, false)
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    render()
-}
+  return (
+    <HomeCarouselStyle>
+      <div className="slider">
+        <button className='pbutton carouselbutton' onClick={prevSlide} aria-label="Previous slide">❮</button>
+        <div className="image-container">
+          {displayedImages.map((image, index) => (
+            <img 
+              key={index} 
+              src={image} 
+              alt={`Slide ${currentIndex + index - 1}`} 
+              className={index === 1 ? 'active' : ''} // Add the active class to the center image
+              onError={(e) => e.target.src = getImagePath("fallback")} 
+            />
+          ))}
+        </div>
+        <button className='nbutton carouselbutton' onClick={nextSlide} aria-label="Next slide">❯</button>
+      </div>
+      <div className="pagination">
+        {Array.from({ length: totalImages }, (_, index) => (
+          <button key={index} onClick={() => goToPage(index)} className={currentIndex === index ? 'active' : ''}>
+            {index + 1}
+          </button>
+        ))}
+      </div>
+    </HomeCarouselStyle>
+  );
+};
 
-const stats = new Stats()
-document.body.appendChild(stats.dom)
-
-function animate() {
-    requestAnimationFrame(animate)
-
-    controls.update()
-
-    render()
-
-    stats.update()
-}
-
-function render() {
-    renderer.render(scene, camera)
-}
-
-animate()
+export default HomeCarousel;

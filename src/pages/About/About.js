@@ -10,7 +10,7 @@ const About = () => {
 
   return (
     <AboutStyle>
-      <Fbx></Fbx>
+      {/* <Fbx></Fbx> */}
       <Carousel />
       
     </AboutStyle> 

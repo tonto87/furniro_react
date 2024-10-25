@@ -7,31 +7,23 @@ const images = [
   getImagePath("image2.png"),
   getImagePath("image3.png"),
   getImagePath("image4.png"),
-  getImagePath("image4.png"),
+  getImagePath("image5.png"),
   getImagePath("image6.png"),
   getImagePath("image7.png"),
   getImagePath("image8.png"),
   getImagePath("image9.png"),
-
 ];
 
 const HomeCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const imagesPerPage = 3;
-
-  const totalPages = Math.ceil(images.length / imagesPerPage);
+  const [currentIndex, setCurrentIndex] = useState(0);  
+  const totalImages = images.length; 
 
   const nextSlide = () => {
-    // setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    // setCurrentIndex((prevIndex) => (prevIndex + 1) % Math.ceil(images.length / imagesPerPage));
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
   };
 
   const prevSlide = () => {
-    // setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-    // setCurrentIndex((prevIndex) => (prevIndex - 1 + Math.ceil(images.length / imagesPerPage)) % Math.ceil(images.length / imagesPerPage));
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalPages) % totalPages);
-
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalImages) % totalImages);
   };
 
   const goToPage = (index) => {
@@ -41,26 +33,33 @@ const HomeCarousel = () => {
   useEffect(() => {
     const interval = setInterval(nextSlide, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, []); 
 
-  const start = currentIndex * imagesPerPage;
-  const displayedImages = images.slice(start, start + imagesPerPage);
+  const displayedImages = [
+    images[(currentIndex - 1 + totalImages) % totalImages], // Left inactive
+    images[currentIndex], // Active
+    images[(currentIndex + 1) % totalImages], // Right inactive
+  ];
 
   return (
     <HomeCarouselStyle>
       <div className="slider">
-        <button className='pbutton carouselbutton' onClick={prevSlide} aria-label="Previous slide">❮</button>
-        {/* <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} onError={(e) => e.target.src = getImagePath("fallback")} /> */}
+        <button className='pbutton carouselbutton' onClick={prevSlide} aria-label="Previous slide">❮</button>        
         <div className="image-container">
-          {displayedImages.map((image, index) => (
-            <img key={index} src={image} alt={`Slide ${start + index + 1}`} onError={(e) => e.target.src = getImagePath("fallback")} />
+          {displayedImages.map((image, index) => (           
+            <img 
+            key={index} 
+            src={image} 
+            alt={`Slide ${currentIndex + index - 1}`} 
+            className={index === 1 ? 'active' : ''} // Add the active class to the center image
+            onError={(e) => e.target.src = getImagePath("fallback")} 
+          />
           ))}
-        </div>
-        
+        </div>        
         <button className='nbutton carouselbutton' onClick={nextSlide} aria-label="Next slide">❯</button>
       </div>
       <div className="pagination">
-        {Array.from({ length: totalPages }, (_, index) => (
+        {Array.from({ length: totalImages }, (_, index) => (
           <button key={index} onClick={() => goToPage(index)} className={currentIndex === index ? 'active' : ''}>
             {index + 1}
           </button>
