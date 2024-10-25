@@ -330,7 +330,7 @@ export const InspirationsStyle = styled.div`
       padding: 223px 42px 223px 100px;
       flex-direction: column;
 
-      // TODO: [Tonto] don't use tag names as class names, rgb use variable
+      
       &-h1 {
         text-shadow: 0 4px 4px rgb(0 0 0 / 25%);
         font-size: 40px;
@@ -395,7 +395,7 @@ export const InspirationsStyle = styled.div`
           left: 24px;
           width: 217px;
 
-          // TODO: [Tonto] use variable
+          
           background: rgb(255 255 255 / 72%);
           backdrop-filter: blur(1.5px);
           gap: 8px;
@@ -403,7 +403,7 @@ export const InspirationsStyle = styled.div`
           max-height: 100%;
           height: auto;
 
-          // TODO: [Tonto] don't use number as class names
+          
           &-1 {
             display: flex;
             flex-direction: row;
@@ -416,7 +416,7 @@ export const InspirationsStyle = styled.div`
             }
           }
 
-          // TODO: [Tonto] don't use number as class names
+          
           &-2 {
             display: flex;
             flex-direction: row;
@@ -430,7 +430,7 @@ export const InspirationsStyle = styled.div`
               line-height: 150%;
             }
 
-            // TODO: [Tonto] don't use tag name as class names
+            
             &-h1 {
               color: $grey1;
               font-size: 24px;
@@ -463,7 +463,7 @@ export const InspirationsStyle = styled.div`
         border-radius: 5px;
         fill: $white;
 
-        // TODO: [Tonto] use variable
+        
         filter: drop-shadow(0 4px 14px rgb(0 0 0 / 16%));
         background-image: url("../src/assets/icons/ellipse4.svg");
         display: flex;

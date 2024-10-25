@@ -5,6 +5,7 @@ import vector1 from "../../..//assets/icons/vector1.svg";
 import inspirationdiningroom from "../../..//assets/images/inspirationdiningroom.png";
 import inspirationcrop from "../../..//assets/images/inspirationcrop.png";
 import { useNavigate } from "react-router-dom";
+import HomeCarousel from "../../../atoms/Carousel/HomeCarousel";
 
 const Inspirations = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Inspirations = () => {
               Explore More
             </button>
           </div>
-          <div className="inspirations__slider">
+          {/* <div className="inspirations__slider">
             <div className="inspirations__slider-cart">
               <img
                 className="inspirations__slider-cart-img-1"
@@ -98,7 +99,8 @@ const Inspirations = () => {
               <button className="inspirations__slider-radio-buttons"></button>
             </div>
             <div className="inspirations__slider-button"></div>
-          </div>
+          </div> */}
+          <HomeCarousel/>
         </div>
       </section>
     </InspirationsStyle>

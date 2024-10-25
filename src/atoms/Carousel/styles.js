@@ -11,6 +11,7 @@ export const HomeCarouselStyle = styled.div`
   flex-direction: column;  
   gap: 50px;
   padding: 50px 0;
+  overflow: hidden;
 
   .slider {
     display: flex;
@@ -21,7 +22,7 @@ export const HomeCarouselStyle = styled.div`
 
   .image-container {
     display: flex;
-    gap: 32px;
+    gap: 48px;
     transition: transform 0.5s ease;
   }
   img {
@@ -33,7 +34,7 @@ export const HomeCarouselStyle = styled.div`
     
     &.active {
       filter: opacity(1); /* Active image fully opaque */
-      transform: scale(1.2);
+      transform: scale(1.1);
       opacity: 1;
     }
   }
@@ -67,6 +68,8 @@ export const HomeCarouselStyle = styled.div`
     display: flex;
     justify-content: center;
     position: relative;
+    top: -24px;
+    left: 162px;
 
     button {
       margin: 0 5px;

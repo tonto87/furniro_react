@@ -9,9 +9,9 @@ const images = [
   getImagePath("image4.png"),
   getImagePath("image5.png"),
   getImagePath("image6.png"),
-  getImagePath("image7.png"),
-  getImagePath("image8.png"),
-  getImagePath("image9.png"),
+  // getImagePath("image7.png"),
+  // getImagePath("image8.png"),
+  // getImagePath("image9.png"),
 ];
 
 const HomeCarousel = () => {
@@ -51,7 +51,7 @@ const HomeCarousel = () => {
             key={index} 
             src={image} 
             alt={`Slide ${currentIndex + index - 1}`} 
-            className={index === 1 ? 'active' : ''} // Add the active class to the center image
+            className={index === 0 ? 'active' : ''} // Add the active class to the center image
             onError={(e) => e.target.src = getImagePath("fallback")} 
           />
           ))}
